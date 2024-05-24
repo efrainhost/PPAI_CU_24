@@ -31,13 +31,50 @@ namespace PPAI_CU_24
             rdPantalla.Checked = false;
 
         }
-
+        
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("¿Está seguro que quiere generar el Reporte?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            bool resultado = false;
+            DateTime fechaDesde = dtFechaDesde.Value;
+            DateTime fechaHasta = dtFechaHasta.Value;
+            resultado = validarFecha(fechaDesde, fechaHasta);
+            if (resultado)
+            {
+                DialogResult confirmacion = MessageBox.Show("Esta seguro que desea generar el ranking?", "Generacion ranking", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (confirmacion == DialogResult.OK)
+                {
+                    MessageBox.Show("Se ha generado con éxito");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Las fechas no son validas");
+            }
+        }    
+
+        private bool validarFecha(DateTime fechaDesde , DateTime fechaHasta)
+        {
+            int resultado = fechaDesde.CompareTo(fechaHasta);   
+            if (resultado == -1)
+            {
+                bool res = false;
+                return res;
+            }
+            else if (resultado == 1)
+            {
+                bool res = true;
+                return res;
+            }
+            else
+            {
+                bool res = false;
+                return res;
+            }
+        }
+           // MessageBox.Show("¿Está seguro que quiere generar el Reporte?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
     }
-    }
+    
 
 
 
