@@ -20,17 +20,6 @@ namespace PPAI_CU_24
             cmbTipoVisualizacion.Items.Add("Pantalla");
         }
 
-        private void btnLimpiar_Click(object sender, EventArgs e)
-        {
-            limpiarCampos();
-        }
-
-        private void limpiarCampos()
-        {
-            dtFechaDesde.Text = "";
-            dtFechaHasta.Text = "";
-        }
-
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             bool fechaValida = false;
