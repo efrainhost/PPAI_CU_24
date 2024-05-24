@@ -1,6 +1,6 @@
 ﻿namespace PPAI_CU_24
 {
-    partial class Form1
+    partial class FormGenerarRanking
     {
         /// <summary>
         ///  Required designer variable.
@@ -32,18 +32,19 @@
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            dateTimePicker2 = new DateTimePicker();
+            dtFechaDesde = new DateTimePicker();
+            dtFechaHasta = new DateTimePicker();
             label5 = new Label();
             label6 = new Label();
             cmbReseña = new ComboBox();
             label7 = new Label();
-            groupBox1 = new GroupBox();
-            radioButton3 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
-            button1 = new Button();
-            groupBox1.SuspendLayout();
+            gbTipoDeVisualizacion = new GroupBox();
+            rdPantalla = new RadioButton();
+            rdExcel = new RadioButton();
+            rdPDF = new RadioButton();
+            btnGenerar = new Button();
+            btnLimpiar = new Button();
+            gbTipoDeVisualizacion.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -84,21 +85,21 @@
             label4.TabIndex = 3;
             label4.Text = "Fecha desde:";
             // 
-            // dateTimePicker1
+            // dtFechaDesde
             // 
-            dateTimePicker1.Location = new Point(158, 83);
-            dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(238, 23);
-            dateTimePicker1.TabIndex = 4;
+            dtFechaDesde.Location = new Point(158, 83);
+            dtFechaDesde.Margin = new Padding(3, 2, 3, 2);
+            dtFechaDesde.Name = "dtFechaDesde";
+            dtFechaDesde.Size = new Size(238, 23);
+            dtFechaDesde.TabIndex = 4;
             // 
-            // dateTimePicker2
+            // dtFechaHasta
             // 
-            dateTimePicker2.Location = new Point(158, 108);
-            dateTimePicker2.Margin = new Padding(3, 2, 3, 2);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(238, 23);
-            dateTimePicker2.TabIndex = 5;
+            dtFechaHasta.Location = new Point(158, 108);
+            dtFechaHasta.Margin = new Padding(3, 2, 3, 2);
+            dtFechaHasta.Name = "dtFechaHasta";
+            dtFechaHasta.Size = new Size(238, 23);
+            dtFechaHasta.TabIndex = 5;
             // 
             // label5
             // 
@@ -137,89 +138,100 @@
             label7.TabIndex = 9;
             label7.Text = "Seleccione el tipo de visualizacion:";
             // 
-            // groupBox1
+            // gbTipoDeVisualizacion
             // 
-            groupBox1.Controls.Add(radioButton3);
-            groupBox1.Controls.Add(radioButton2);
-            groupBox1.Controls.Add(radioButton1);
-            groupBox1.Location = new Point(102, 229);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(299, 50);
-            groupBox1.TabIndex = 10;
-            groupBox1.TabStop = false;
+            gbTipoDeVisualizacion.Controls.Add(rdPantalla);
+            gbTipoDeVisualizacion.Controls.Add(rdExcel);
+            gbTipoDeVisualizacion.Controls.Add(rdPDF);
+            gbTipoDeVisualizacion.Location = new Point(102, 229);
+            gbTipoDeVisualizacion.Margin = new Padding(3, 2, 3, 2);
+            gbTipoDeVisualizacion.Name = "gbTipoDeVisualizacion";
+            gbTipoDeVisualizacion.Padding = new Padding(3, 2, 3, 2);
+            gbTipoDeVisualizacion.Size = new Size(299, 50);
+            gbTipoDeVisualizacion.TabIndex = 10;
+            gbTipoDeVisualizacion.TabStop = false;
             // 
-            // radioButton3
+            // rdPantalla
             // 
-            radioButton3.AutoSize = true;
-            radioButton3.Location = new Point(222, 20);
-            radioButton3.Margin = new Padding(3, 2, 3, 2);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(67, 19);
-            radioButton3.TabIndex = 2;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "Pantalla";
-            radioButton3.UseVisualStyleBackColor = true;
+            rdPantalla.AutoSize = true;
+            rdPantalla.Location = new Point(222, 20);
+            rdPantalla.Margin = new Padding(3, 2, 3, 2);
+            rdPantalla.Name = "rdPantalla";
+            rdPantalla.Size = new Size(67, 19);
+            rdPantalla.TabIndex = 2;
+            rdPantalla.TabStop = true;
+            rdPantalla.Text = "Pantalla";
+            rdPantalla.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rdExcel
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(117, 20);
-            radioButton2.Margin = new Padding(3, 2, 3, 2);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(52, 19);
-            radioButton2.TabIndex = 1;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Excel";
-            radioButton2.UseVisualStyleBackColor = true;
+            rdExcel.AutoSize = true;
+            rdExcel.Location = new Point(117, 20);
+            rdExcel.Margin = new Padding(3, 2, 3, 2);
+            rdExcel.Name = "rdExcel";
+            rdExcel.Size = new Size(52, 19);
+            rdExcel.TabIndex = 1;
+            rdExcel.TabStop = true;
+            rdExcel.Text = "Excel";
+            rdExcel.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdPDF
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(5, 18);
-            radioButton1.Margin = new Padding(3, 2, 3, 2);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(46, 19);
-            radioButton1.TabIndex = 0;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "PDF";
-            radioButton1.UseVisualStyleBackColor = true;
+            rdPDF.AutoSize = true;
+            rdPDF.Location = new Point(16, 20);
+            rdPDF.Margin = new Padding(3, 2, 3, 2);
+            rdPDF.Name = "rdPDF";
+            rdPDF.Size = new Size(46, 19);
+            rdPDF.TabIndex = 0;
+            rdPDF.TabStop = true;
+            rdPDF.Text = "PDF";
+            rdPDF.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnGenerar
             // 
-            button1.Location = new Point(313, 297);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(82, 42);
-            button1.TabIndex = 11;
-            button1.Text = "Generar Ranking";
-            button1.UseVisualStyleBackColor = true;
+            btnGenerar.Location = new Point(278, 310);
+            btnGenerar.Name = "btnGenerar";
+            btnGenerar.Size = new Size(75, 23);
+            btnGenerar.TabIndex = 11;
+            btnGenerar.Text = "generar";
+            btnGenerar.UseVisualStyleBackColor = true;
+            btnGenerar.Click += btnGenerar_Click;
             // 
-            // Form1
+            // btnLimpiar
+            // 
+            btnLimpiar.Location = new Point(371, 310);
+            btnLimpiar.Name = "btnLimpiar";
+            btnLimpiar.Size = new Size(75, 23);
+            btnLimpiar.TabIndex = 12;
+            btnLimpiar.Text = "limpiar";
+            btnLimpiar.UseVisualStyleBackColor = true;
+            btnLimpiar.Click += btnLimpiar_Click;
+            // 
+            // FormGenerarRanking
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 348);
-            Controls.Add(button1);
-            Controls.Add(groupBox1);
+            Controls.Add(btnLimpiar);
+            Controls.Add(btnGenerar);
+            Controls.Add(gbTipoDeVisualizacion);
             Controls.Add(label7);
             Controls.Add(cmbReseña);
             Controls.Add(label6);
             Controls.Add(label5);
-            Controls.Add(dateTimePicker2);
-            Controls.Add(dateTimePicker1);
+            Controls.Add(dtFechaHasta);
+            Controls.Add(dtFechaDesde);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Margin = new Padding(3, 2, 3, 2);
-            Name = "Form1";
+            Name = "FormGenerarRanking";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Generar informe ranking de vino";
+            Text = "Generar ranking de vinos";
             Load += Form1_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            gbTipoDeVisualizacion.ResumeLayout(false);
+            gbTipoDeVisualizacion.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,16 +242,17 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private DateTimePicker dateTimePicker1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker dtFechaDesde;
+        private DateTimePicker dtFechaHasta;
         private Label label5;
         private Label label6;
         private ComboBox cmbReseña;
         private Label label7;
-        private GroupBox groupBox1;
-        private RadioButton radioButton3;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
-        private Button button1;
+        private GroupBox gbTipoDeVisualizacion;
+        private RadioButton rdPantalla;
+        private RadioButton rdExcel;
+        private RadioButton rdPDF;
+        private Button btnGenerar;
+        private Button btnLimpiar;
     }
 }

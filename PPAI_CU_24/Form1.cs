@@ -1,8 +1,10 @@
+using System.Xml;
+
 namespace PPAI_CU_24
 {
-    public partial class Form1 : Form
+    public partial class FormGenerarRanking : Form
     {
-        public Form1()
+        public FormGenerarRanking()
         {
             InitializeComponent();
         }
@@ -11,7 +13,33 @@ namespace PPAI_CU_24
         {
             cmbReseña.Items.Add("Normal");
             cmbReseña.Items.Add("de Amigos");
-            cmbReseña.Items.Add("de no me acuerdo");
+            cmbReseña.Items.Add("de Sommeliers");
+            cmbReseña.Items.Add("");
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            limpiarCampos();
+        }
+
+        private void limpiarCampos()
+        {
+            dtFechaDesde.Text = "";
+            dtFechaHasta.Text = "";
+            rdPDF.Checked = false;
+            rdExcel.Checked = false;
+            rdPantalla.Checked = false;
+
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("¿Está seguro que quiere generar el Reporte?", "Confirmación", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
         }
     }
-}
+    }
+
+
+
+
+
