@@ -6,7 +6,34 @@ using System.Threading.Tasks;
 
 namespace PPAI_CU_24.Entidades
 {
-    internal class Bodega
+    public class Bodega
     {
+        // Atributos
+        public string nombre { get; set; }
+
+        // Relacion 
+        public RegionVitivinicola regionVitivinicola { get; set; }
+
+        public Bodega(string nombre, RegionVitivinicola regionVitivinicola)
+        {
+            // Inicializar atributos
+            this.nombre = nombre;
+
+            // Inicializar relaciones
+            this.regionVitivinicola = regionVitivinicola;
+        }
+
+        // Metodos get y set
+        
+        public void setNombre(string nombre)
+        {
+            this.nombre = nombre;
+        }
+        public string getNombre()
+        {
+            return this.nombre;
+        }
     }
+
+   
 }

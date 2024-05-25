@@ -6,7 +6,26 @@ using System.Threading.Tasks;
 
 namespace PPAI_CU_24.Entidades
 {
-    internal class Varietal
+    public class Varietal
     {
+        // Atributos
+        public string descripcion;
+
+        // Constructos
+        public Varietal(string descripcion) 
+        {
+            // Inicializar atributos
+            this.descripcion = descripcion;
+        }   
+
+        // Metodos set y get
+        public void setDescripcion(string descripcion)
+        {
+            this.descripcion = descripcion;
+        }
+        public string getDescripcion()
+        {
+            return this.descripcion;
+        }
     }
 }
