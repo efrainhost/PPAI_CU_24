@@ -21,6 +21,7 @@ namespace PPAI_CU_24.Entidades
             this.nombre = nombre;   
         }
 
+       
         // Metodos set y get
         public void setNombre(string nombre)
         {
@@ -40,6 +41,11 @@ namespace PPAI_CU_24.Entidades
         public String getDescripcion()
         {
             return this.descripcion;
+        }
+
+        public static string getNombreRegion()
+        {
+            return Provincia.obtenerPais();
         }
 
 

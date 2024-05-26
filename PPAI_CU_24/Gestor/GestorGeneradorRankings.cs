@@ -12,6 +12,8 @@ namespace PPAI_CU_24.Gestor
         // Atributos
         public static List<float> promediosVino { get; set; }
         public static List<Vino> vinosConReseñaAprobada { get; set; }   
+        public static List<Vino> vinosOrdenados { get; set; }
+        public static List<Vino> mejoresDiezVinos { get; set; }
         public static DateTime fechaDesde { get; set; }
         public static DateTime fechaHasta { get; set; }
         public string reseñaSeleccionada { get; set; }
@@ -76,16 +78,26 @@ namespace PPAI_CU_24.Gestor
 
         public void ordenarVinosPorCalificacion()
         {
+            vinosOrdenados = promediosVino
+                .OrderByDescending(promedio => promedio) // Ordena de mayor a menor promedio
+                .Select(promedio => vinosConReseñaAprobada[promediosVino.IndexOf(promedio)]) // Obtiene los vinos según el índice del promedio
+                .ToList();
 
         }
 
         public void filtrarMejoresDiezVinos()
         {
+            mejoresDiezVinos = vinosOrdenados.Take(10).ToList();
 
         }
         public void buscarInformacionVinos() 
         { 
-        
+            foreach (Vino vino in mejoresDiezVinos)
+            {
+                vino.getNombre();
+                vino.getPrecioARS();
+                vino.obtenerBodega();
+            }
         }
 
         public void generarExcelRanking() 

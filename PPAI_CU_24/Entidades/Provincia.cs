@@ -37,6 +37,9 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Metodos agregar obtener pais
-       
+        public static string obtenerPais(Provincia provincia)
+        {
+            return Pais.getNombrePais(provincia);
+        }
     }
 }

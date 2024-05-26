@@ -76,9 +76,18 @@ namespace PPAI_CU_24.Entidades
             return vinosAprobados;
  
         }
-        public string obtenerBodega(Bodega bodega)
+        public static obtenerInformacion(Vino vino)
         {
-            return bodega.getNombre();
+            vino.getNombre();
+            vino.getPrecioARS();
+            obtenerBodega(vino);
+        }
+        public static string obtenerBodega()
+        {
+            Bodega.getNombre();
+            Varietal.getDescripcion();
+            Bodega.conocerRegion();
+            
         }
     }
 

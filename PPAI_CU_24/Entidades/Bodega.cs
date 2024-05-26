@@ -23,6 +23,7 @@ namespace PPAI_CU_24.Entidades
             this.regionVitivinicola = regionVitivinicola;
         }
 
+
         // Metodos get y set
         
         public void setNombre(string nombre)
@@ -32,6 +33,11 @@ namespace PPAI_CU_24.Entidades
         public string getNombre()
         {
             return this.nombre;
+        }
+
+        public static string conocerRegion()
+        {
+            return RegionVitivinicola.getNombreRegion();
         }
     }
 

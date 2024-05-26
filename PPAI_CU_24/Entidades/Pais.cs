@@ -28,14 +28,20 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Metodos set y get
-        public String getNombre()
+        public string getNombre()
         {
             return this.nombre;
         }
 
         public void setNombre( string nombre)
         {
+
             this.nombre = nombre;
+        }
+        
+        public string getNombrePais()
+        {
+            provincia.get;
         }
         
     }
