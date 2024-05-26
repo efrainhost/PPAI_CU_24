@@ -1,12 +1,17 @@
+using PPAI_CU_24.Gestor;
 using System.Xml;
 
 namespace PPAI_CU_24
 {
-    public partial class FormGenerarRanking : Form
+    public partial class PantallaGeneradorRanking : Form
     {
-        public FormGenerarRanking()
+        // Relaciones 
+        public GestorGeneradorRankings gestorGeneradorRankings { get; set; }
+        
+        public PantallaGeneradorRanking(GestorGeneradorRankings gestorGeneradorRankings)
         {
             InitializeComponent();
+            this.gestorGeneradorRankings = gestorGeneradorRankings;
         }
 
         private void PantallaGeneradorRanking_Load(object sender, EventArgs e)
@@ -97,7 +102,7 @@ namespace PPAI_CU_24
             return cmbTipoVisualizacion.Text;
         }
 
-        private bool ValidarFecha(DateTime fechaDesde, DateTime fechaHasta)
+        public bool ValidarFecha(DateTime fechaDesde, DateTime fechaHasta)
         {
             int resultado = fechaHasta.CompareTo(fechaDesde);
             if (resultado == -1)

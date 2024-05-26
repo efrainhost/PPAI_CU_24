@@ -25,9 +25,9 @@ namespace PPAI_CU_24.Entidades
         // Metodos set y get
         public void setEsPremium(bool esPremium)
         {
-            this.esPremium |= esPremium;
+            this.esPremium = esPremium;
         }
-        public bool get()
+        public bool getEsPremium()
         {
             return this.esPremium;
         }
@@ -51,5 +51,26 @@ namespace PPAI_CU_24.Entidades
         {
             return this.puntaje;
         }
+
+        // Metodos
+        public bool estasEnElPeriodo(Reseña reseña, DateTime fechaDesde, DateTime fechaHasta)
+        {
+            int comp_inf = reseña.fechaReseña.CompareTo(fechaDesde);
+            int comp_sup = fechaHasta.CompareTo(reseña.fechaReseña);
+            
+            if (comp_inf == 1 && comp_sup == 1 )
+            {
+                 return  true;
+            }
+            else
+            {
+                return false;
+
+            }
+
+        }
+
+ 
+
     }
 }

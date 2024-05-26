@@ -53,6 +53,23 @@ namespace PPAI_CU_24.Entidades
         {
             return this.precioARS;
         }
+
+        // Metodos
+        public bool buscarVinosConReseñas(Vino vino)
+        {
+            if (vino.reseñas.Count() > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public string obtenerBodega(Bodega bodega)
+        {
+            return bodega.getNombre();
+        }
        
         
     }
