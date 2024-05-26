@@ -65,6 +65,10 @@ namespace PPAI_CU_24
             }
            
         }
+        public void opcGenerarRankingVinos()
+        {
+
+        }
         private void solicitarConfirmacionReporte()
         {
             if (MessageBox.Show("¿Desea confirmar generacion de reporte?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)

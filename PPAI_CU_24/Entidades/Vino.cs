@@ -70,8 +70,6 @@ namespace PPAI_CU_24.Entidades
         {
             return bodega.getNombre();
         }
-       
-        
     }
 
     
