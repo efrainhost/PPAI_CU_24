@@ -10,8 +10,10 @@ namespace PPAI_CU_24.Gestor
     public class GestorGeneradorRankings
     {
         // Atributos
-        public string fechaDesde { get; set; }
-        public string fechaHasta { get; set; }
+        public static List<float> promediosVino { get; set; }
+        public static List<Vino> vinosConReseñaAprobada { get; set; }   
+        public static DateTime fechaDesde { get; set; }
+        public static DateTime fechaHasta { get; set; }
         public string reseñaSeleccionada { get; set; }
         public string visualizacionSeleccionada { get; set; }
         public string confirmacionReporte { get; set; }
@@ -19,15 +21,13 @@ namespace PPAI_CU_24.Gestor
         // Constructor 
 
 
-        // Relaciones 
-        public Vino vino;
+        
 
         // Metodos
 
         public void opcGenerarRankingVinos()
         {
-            DateTime fechaDesde = tomarFechaDesde;
-            DateTime fechaHasta = tomarFechaHasta;
+
         }
 
         public void tomarFechaDesde(DateTime fechaDesde)
@@ -52,14 +52,26 @@ namespace PPAI_CU_24.Gestor
             this.confirmacionReporte = confirmacionReporte;
         }
 
-        public void buscarVinosConReseñas()
+        public static void  buscarVinosConReseñas()
         {
-
+            vinosConReseñaAprobada = Vino.buscarVinosConReseñas();
         }
 
         public void calcularPromedioCalificaciones()
         {
+            int cantidad = 0;
+            int puntajeTot = 0;
+            
 
+            foreach (Vino vino in vinosConReseñaAprobada)
+            {
+                foreach (Reseña rese in vino.reseñas)
+                {
+                    cantidad += 1;
+                    puntajeTot += rese.puntaje;
+                }
+                promediosVino.Add(puntajeTot / cantidad);
+            }
         }
 
         public void ordenarVinosPorCalificacion()

@@ -20,7 +20,7 @@ namespace PPAI_CU_24.Entidades
             this.esPremium = esPremium;
             this.fechaReseña = fechaReseña;
             this.puntaje = puntaje;
-        }               
+        }
 
         // Metodos set y get
         public void setEsPremium(bool esPremium)
@@ -53,24 +53,45 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Metodos
-        public bool estasEnElPeriodo(Reseña reseña, DateTime fechaDesde, DateTime fechaHasta)
+        public static List<Reseña> buscarReseña(Vino vino, DateTime fechaDesde, DateTime fechaHasta)
         {
-            int comp_inf = reseña.fechaReseña.CompareTo(fechaDesde);
-            int comp_sup = fechaHasta.CompareTo(reseña.fechaReseña);
-            
-            if (comp_inf == 1 && comp_sup == 1 )
+            List<Reseña> reseñasValidas = [];
+            foreach (Reseña rese in vino.reseñas)
             {
-                 return  true;
-            }
-            else
-            {
-                return false;
+                bool periodo = estasEnElPeriodo(rese, fechaDesde, fechaHasta);
+                bool premium = sosPremium(rese);
 
+                if (periodo && premium)
+                {
+                    reseñasValidas.Add(rese);
+                }
             }
+            return reseñasValidas;
 
         }
 
- 
+        private static bool sosPremium(Reseña rese)
+        {
+             return rese.esPremium;
+        }
+
+        private static bool estasEnElPeriodo(Reseña rese, DateTime fechaDesde, DateTime fechaHasta)
+        {
+          
+            if (rese.fechaReseña >= fechaDesde && rese.fechaReseña <= fechaHasta)
+                {
+                    return true;
+                }
+            else
+                {
+                    return false;
+                }    
+        }
+
+        //private static int getPuntaje(Reseña rese)
+        //{
+        //    return rese.puntaje;
+        //}
 
     }
 }

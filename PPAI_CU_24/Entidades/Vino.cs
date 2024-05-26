@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI_CU_24.Gestor;
+using PPAI_CU_24.Servicios;
 
 namespace PPAI_CU_24.Entidades
 {
@@ -55,16 +57,24 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Metodos
-        public bool buscarVinosConReseñas(Vino vino)
+        public static List<Vino> buscarVinosConReseñas()
         {
-            if (vino.reseñas.Count() > 0)
+            List<Vino> vinos = Servicios.Servicios.GeneradorVinos();
+            List<Vino> vinosAprobados = [];
+
+            foreach (Vino vino in vinos)
             {
-                return true;
+                if (vino.reseñas.Count > 0)
+                {
+                    List<Reseña> reseñasAprobadas = Reseña.buscarReseña(vino, GestorGeneradorRankings.fechaDesde, GestorGeneradorRankings.fechaHasta);
+                    if (reseñasAprobadas.Count > 0)
+                    {
+                        vinosAprobados.Add(vino);
+                    }
+                }
             }
-            else
-            {
-                return false;
-            }
+            return vinosAprobados;
+ 
         }
         public string obtenerBodega(Bodega bodega)
         {

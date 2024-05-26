@@ -7,9 +7,9 @@ using PPAI_CU_24.Entidades;
 
 namespace PPAI_CU_24.Servicios
 {
-    internal class Servicios
+    public class Servicios
     {
-        public void GeneradorVinos()
+        public  static List<Vino> GeneradorVinos()
         {
             
             RegionVitivinicola Mendoza = new RegionVitivinicola("La región vitivinícola más grande y reconocida de Argentina, famosa por sus vinos tintos Malbec, Cabernet Sauvignon y Bonarda, así como vinos blancos como Chardonnay y Torrontés", "Mendoza");
@@ -126,14 +126,38 @@ namespace PPAI_CU_24.Servicios
             Vino PatagoniaWinesMerlot = new Vino("Patagonia Wines Merlot", 1700, PatagoniaWines, [UvaMerlot], [resVeintitres]);
             Vino SantiagoGraffignaCabernetSauvignon = new Vino("Santiago Graffigna Cabernet Sauvignon", 1400, Graffigna, [UvaCabernetSauvignon], [resVeinticuatro]);
             Vino VirgenDelSolTorrontes = new Vino("Virgen del Sol Torrontés", 1100, VirgenDelSol, [UvaTorrontes], [resVeinticinco]);
-            Vino MissionesVineyardTannat = new Vino("Missiones Vineyard Tannat", 1300, MissionesVineyard, [UvaTannat], [resVeintiseis]);
+            Vino MisionesVineyardTannat = new Vino("Missiones Vineyard Tannat", 1300, MissionesVineyard, [UvaTannat], [resVeintiseis]);
             Vino IberaValleyMalbec = new Vino("Iberá Valley Malbec", 1600, IberaValley, [UvaMalbec], [resVeintisiete]);
             Vino FincaLaPayaBonarda = new Vino("Finca La Paya Bonarda", 1200, FincaLaPaya, [UvaBonarda], [resVeintiocho]);
             Vino LaPampaWinesChardonnay = new Vino("La Pampa Wines Chardonnay", 1400, LaPampaWines, [UvaChardonnay], [resVeintinueve]);
             Vino EstanciaPatagonicaMalbec = new Vino("Estancia Patagónica Malbec", 1400, EstanciaMendoza, [UvaMalbec], [resTreinta]);
             Vino TierraDelSolCabernetSauvignon = new Vino("Tierra del Sol Cabernet Sauvignon", 1500, VirgenDelSol, [UvaCabernetSauvignon], [resTreintiuno]);
 
+            List<Vino> vinos = new List<Vino>();
 
+            vinos.Add(LasPerdicesMalbec);
+            vinos.Add(GraffignaCentenarioMalbec);
+            vinos.Add(ColomeEstateMalbec);
+            vinos.Add(LaRiojaAltaVinaArdanzaReserva);
+            vinos.Add(ElEstecoDonDavidMalbec);
+            vinos.Add(HumbertoCanaleOldVineMalbec);
+            vinos.Add(DelFinDelMundoGranReservaMalbec);
+            vinos.Add(ChacraPinotNoir);
+            vinos.Add(MalabrigoSyrah);
+            vinos.Add(EstanciaMendozaCabernetSauvignon);
+            vinos.Add(SantaJuliaReservaMalbec);
+            vinos.Add(Ruta40Malbec);
+            vinos.Add(PatagoniaWinesMerlot);
+            vinos.Add(SantiagoGraffignaCabernetSauvignon);
+            vinos.Add(VirgenDelSolTorrontes);
+            vinos.Add(MisionesVineyardTannat);
+            vinos.Add(IberaValleyMalbec);
+            vinos.Add(FincaLaPayaBonarda);
+            vinos.Add(LaPampaWinesChardonnay);
+            vinos.Add(EstanciaPatagonicaMalbec);
+            vinos.Add(TierraDelSolCabernetSauvignon);
+
+            return vinos;
 
 
 
