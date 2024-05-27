@@ -13,7 +13,7 @@ namespace PPAI_CU_24.Gestor
         public  List<float> promediosVino { get; set; }
         public static List<Vino> vinosConReseñaAprobada { get; set; }   
         public  List<Vino> vinosOrdenados { get; set; }
-        public  List<Vino> mejoresDiezVinos { get; set; }
+        public static List<Vino> mejoresDiezVinos { get; set; }
         public  DateTime fechaDesde { get; set; }
         public  DateTime fechaHasta { get; set; }
         public string reseñaSeleccionada { get; set; }
@@ -33,6 +33,13 @@ namespace PPAI_CU_24.Gestor
         public void opcGenerarRankingVinos()
         {
 
+
+            buscarVinosConReseñas();
+            calcularPromedioCalificaciones();
+            ordenarVinosPorCalificacion();
+            filtrarMejoresDiezVinos();
+            buscarInformacionVinos();
+            finCU();
         }
 
         public void tomarFechaDesde(DateTime fechaDesde)
@@ -106,6 +113,7 @@ namespace PPAI_CU_24.Gestor
         public void generarExcelRanking() 
         {
         }
+
 
 
         public void finCU()

@@ -1,4 +1,6 @@
+using PPAI_CU_24.Entidades;
 using PPAI_CU_24.Gestor;
+using PPAI_CU_24.Interfaces;
 using System.Xml;
 
 namespace PPAI_CU_24
@@ -31,10 +33,11 @@ namespace PPAI_CU_24
             bool reseñaSeleccionada = false;
             bool tipoVisualizacionSeleccionada = false;
 
-            bool resultado = ValidarFecha(tomarFechaDesde(),tomarFechaHasta());
+            bool resultado = ValidarPeriodo(tomarFechaDesde(),tomarFechaHasta());
             if (resultado)
             {
                 fechaValida = true;
+                
             }
             else
             {
@@ -62,12 +65,27 @@ namespace PPAI_CU_24
             if (fechaValida && reseñaSeleccionada && tipoVisualizacionSeleccionada)
             {
                 solicitarConfirmacionReporte();
+
+                // Crear una instancia de la nueva pantalla
+                var formVisualizacionVinos = new PantallaVisualizacionVinos();
+
+                // Obtener los mejores diez vinos del gestor
+                List<Vino> mejoresVinos = GestorGeneradorRankings.mejoresDiezVinos;
+
+                // Llenar el DataGridView de la nueva pantalla con los datos de los vinos
+                foreach (var vino in mejoresVinos)
+                {
+                    formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), vino.obtenerBodega(vino));
+                }
+
+                // Mostrar la nueva pantalla
+                formVisualizacionVinos.Show();
             }
-           
-        }
+
+            }
         public void opcGenerarRankingVinos()
         {
-
+            
         }
         private void solicitarConfirmacionReporte()
         {
@@ -87,11 +105,11 @@ namespace PPAI_CU_24
             this.Hide();
         }
 
-        private DateTime tomarFechaDesde()
+        public  DateTime tomarFechaDesde()
         {
             return dtFechaDesde.Value;
         }
-        private DateTime tomarFechaHasta()
+        public DateTime tomarFechaHasta()
         {
             return dtFechaHasta.Value;
         }
@@ -106,7 +124,7 @@ namespace PPAI_CU_24
             return cmbTipoVisualizacion.Text;
         }
 
-        public bool ValidarFecha(DateTime fechaDesde, DateTime fechaHasta)
+        public bool ValidarPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
             int resultado = fechaHasta.CompareTo(fechaDesde);
             if (resultado == -1)

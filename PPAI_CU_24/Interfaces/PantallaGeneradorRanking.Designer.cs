@@ -87,7 +87,7 @@
             // dtFechaDesde
             // 
             dtFechaDesde.Location = new Point(294, 178);
-            dtFechaDesde.Margin = new Padding(5, 5, 5, 5);
+            dtFechaDesde.Margin = new Padding(5);
             dtFechaDesde.Name = "dtFechaDesde";
             dtFechaDesde.Size = new Size(438, 39);
             dtFechaDesde.TabIndex = 4;
@@ -95,7 +95,7 @@
             // dtFechaHasta
             // 
             dtFechaHasta.Location = new Point(294, 230);
-            dtFechaHasta.Margin = new Padding(5, 5, 5, 5);
+            dtFechaHasta.Margin = new Padding(5);
             dtFechaHasta.Name = "dtFechaHasta";
             dtFechaHasta.Size = new Size(438, 39);
             dtFechaHasta.TabIndex = 5;
@@ -125,7 +125,7 @@
             cmbReseña.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbReseña.FormattingEnabled = true;
             cmbReseña.Location = new Point(294, 365);
-            cmbReseña.Margin = new Padding(5, 5, 5, 5);
+            cmbReseña.Margin = new Padding(5);
             cmbReseña.Name = "cmbReseña";
             cmbReseña.Size = new Size(243, 40);
             cmbReseña.TabIndex = 8;
@@ -145,9 +145,9 @@
             btnGenerar.Location = new Point(557, 672);
             btnGenerar.Margin = new Padding(5, 6, 5, 6);
             btnGenerar.Name = "btnGenerar";
-            btnGenerar.Size = new Size(140, 50);
+            btnGenerar.Size = new Size(140, 81);
             btnGenerar.TabIndex = 11;
-            btnGenerar.Text = "generar";
+            btnGenerar.Text = "Generar ranking";
             btnGenerar.UseVisualStyleBackColor = true;
             btnGenerar.Click += btnGenerar_Click;
             // 
@@ -156,7 +156,7 @@
             cmbTipoVisualizacion.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbTipoVisualizacion.FormattingEnabled = true;
             cmbTipoVisualizacion.Location = new Point(294, 504);
-            cmbTipoVisualizacion.Margin = new Padding(5, 5, 5, 5);
+            cmbTipoVisualizacion.Margin = new Padding(5);
             cmbTipoVisualizacion.Name = "cmbTipoVisualizacion";
             cmbTipoVisualizacion.Size = new Size(243, 40);
             cmbTipoVisualizacion.TabIndex = 12;
@@ -165,7 +165,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1300, 742);
+            ClientSize = new Size(1171, 861);
             Controls.Add(cmbTipoVisualizacion);
             Controls.Add(btnGenerar);
             Controls.Add(label7);
@@ -178,7 +178,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "PantallaGeneradorRanking";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Generar ranking de vinos";
