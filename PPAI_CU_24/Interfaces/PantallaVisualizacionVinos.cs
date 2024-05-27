@@ -7,9 +7,7 @@
         public PantallaVisualizacionVinos()
         {
             InitializeComponent();
-            
-
-
+ 
         }
        
     }

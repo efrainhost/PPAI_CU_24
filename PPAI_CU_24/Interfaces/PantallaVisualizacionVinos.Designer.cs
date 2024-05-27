@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             dgvVinos = new DataGridView();
+            NombreVino = new DataGridViewTextBoxColumn();
+            Precio = new DataGridViewTextBoxColumn();
+            Varietales = new DataGridViewTextBoxColumn();
+            NombreBodega = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvVinos).BeginInit();
             SuspendLayout();
             // 
@@ -37,12 +41,46 @@
             dgvVinos.AllowUserToAddRows = false;
             dgvVinos.AllowUserToDeleteRows = false;
             dgvVinos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVinos.Location = new Point(141, 67);
+            dgvVinos.Columns.AddRange(new DataGridViewColumn[] { NombreVino, Precio, Varietales, NombreBodega });
+            dgvVinos.Dock = DockStyle.Fill;
+            dgvVinos.Location = new Point(0, 0);
             dgvVinos.Name = "dgvVinos";
             dgvVinos.ReadOnly = true;
             dgvVinos.RowHeadersWidth = 82;
-            dgvVinos.Size = new Size(1235, 642);
+            dgvVinos.Size = new Size(1532, 1015);
             dgvVinos.TabIndex = 0;
+            // 
+            // NombreVino
+            // 
+            NombreVino.HeaderText = "Nombre Vino";
+            NombreVino.MinimumWidth = 10;
+            NombreVino.Name = "NombreVino";
+            NombreVino.ReadOnly = true;
+            NombreVino.Width = 200;
+            // 
+            // Precio
+            // 
+            Precio.HeaderText = "Precio";
+            Precio.MinimumWidth = 10;
+            Precio.Name = "Precio";
+            Precio.ReadOnly = true;
+            Precio.Width = 200;
+            // 
+            // Varietales
+            // 
+            Varietales.HeaderText = "Varietales";
+            Varietales.MinimumWidth = 10;
+            Varietales.Name = "Varietales";
+            Varietales.ReadOnly = true;
+            Varietales.Width = 200;
+            // 
+            // NombreBodega
+            // 
+            NombreBodega.HeaderText = "Nombre Bodega";
+            NombreBodega.MinimumWidth = 10;
+            NombreBodega.Name = "NombreBodega";
+            NombreBodega.ReadOnly = true;
+            NombreBodega.Width = 200;
             // 
             // PantallaVisualizacionVinos
             // 
@@ -59,5 +97,9 @@
         #endregion
 
         public DataGridView dgvVinos;
+        private DataGridViewTextBoxColumn NombreVino;
+        private DataGridViewTextBoxColumn Precio;
+        private DataGridViewTextBoxColumn Varietales;
+        private DataGridViewTextBoxColumn NombreBodega;
     }
 }

@@ -31,7 +31,7 @@ namespace PPAI_CU_24.Entidades
             this.nombre = nombre;
         }
 
-        public String getNombre()
+        public string getNombre()
         {
             return this.nombre;
         }
@@ -41,7 +41,7 @@ namespace PPAI_CU_24.Entidades
             this.descripcion = descripcion;
         }
 
-        public String getDescripcion()
+        public string getDescripcion()
         {
             return this.descripcion;
         }

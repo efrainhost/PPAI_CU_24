@@ -83,7 +83,12 @@ namespace PPAI_CU_24
                 // Llenar el DataGridView de la nueva pantalla con los datos de los vinos
                 foreach (var vino in mejoresVinos)
                 {
-                    formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), vino.obtenerBodega(vino));
+                    List<Varietal> var = []; 
+                    foreach (Varietal varietal in vino.varietales)
+                    {
+                        var.Add(varietal);
+                    }
+                    formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), var, vino.bodega.getNombre());
                 }
 
                 // Mostrar la nueva pantalla
@@ -114,11 +119,11 @@ namespace PPAI_CU_24
         }
 
 
-        public  DateTime tomarFechaDesde()
+        public static DateTime tomarFechaDesde()
         {
             return dtFechaDesde.Value;
         }
-        public DateTime tomarFechaHasta()
+        public static DateTime tomarFechaHasta()
         {
             return dtFechaHasta.Value;
         }

@@ -92,15 +92,15 @@ namespace PPAI_CU_24.Servicios
             Varietal UvaTorrontes = new Varietal("Torrontes");
             Varietal UvaTannat = new Varietal("Tannat");
 
-            Reseña resUno = new Reseña(true, new DateTime (2024, 2, 3), 5);
-            Reseña resDos = new Reseña(false, new DateTime(2024, 6, 3), 3);
-            Reseña resTres = new Reseña(true, new DateTime(2024, 2, 4), 4);
-            Reseña resCuatro = new Reseña(false, new DateTime(2024, 8, 10), 2);
-            Reseña resCinco = new Reseña(true, new DateTime(2024, 2, 5), 5);
-            Reseña resSeis = new Reseña(false, new DateTime(2024, 9, 20), 2);
-            Reseña resSiete = new Reseña(true, new DateTime(2024, 2, 2), 1);
-            Reseña resOcho = new Reseña(false, new DateTime(2024, 2, 3), 5);
-            Reseña resNueve = new Reseña(true, new DateTime(2024, 2, 6), 3);
+            Reseña resUno = new Reseña(true, new DateTime (2024, 5, 28), 5);
+            Reseña resDos = new Reseña(false, new DateTime(2024, 5, 28), 3);
+            Reseña resTres = new Reseña(true, new DateTime(2024, 5, 28), 4);
+            Reseña resCuatro = new Reseña(false, new DateTime(2024, 5, 28), 2);
+            Reseña resCinco = new Reseña(true, new DateTime(2024, 5, 28), 5);
+            Reseña resSeis = new Reseña(false, new DateTime(2024, 5, 28), 2);
+            Reseña resSiete = new Reseña(true, new DateTime(2024, 5, 28), 1);
+            Reseña resOcho = new Reseña(false, new DateTime(2024, 5, 28), 5);
+            Reseña resNueve = new Reseña(true, new DateTime(2024, 5, 28), 3);
             Reseña resDiez = new Reseña(false, new DateTime(2024, 6, 5), 4);
             Reseña resOnce = new Reseña(true, new DateTime(2024, 2, 7), 2);
             Reseña resDoce = new Reseña(false, new DateTime(2024, 8, 12), 5);

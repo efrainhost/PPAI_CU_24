@@ -34,11 +34,6 @@ namespace PPAI_CU_24.Entidades
             this.reseñas = reseñas;
             GestorGeneradorRankings gestorGeneradorRankings = new GestorGeneradorRankings();
             this.gestorGeneradorRankings = gestorGeneradorRankings;
-
-
-
-
-
         }
         
 

@@ -20,6 +20,7 @@ namespace PPAI_CU_24.Gestor
         private string reseñaSeleccionada { get; set; }
         private string visualizacionSeleccionada { get; set; }
         private string confirmacionReporte { get; set; }
+        public PantallaGeneradorRanking pantallaGeneradorRanking { get; set; }
 
         public GestorGeneradorRankings()
         {
@@ -44,13 +45,15 @@ namespace PPAI_CU_24.Gestor
         }
         public static DateTime obtenerFechaDesde()
         {
-            return fechaDesde;
+            DateTime fecha = PantallaGeneradorRanking.tomarFechaDesde();
+            return fecha;
         }
 
         // Método para obtener la fecha hasta
         public static DateTime obtenerFechaHasta()
         {
-            return fechaHasta;
+            DateTime fecha = PantallaGeneradorRanking.tomarFechaHasta();
+            return fecha;
         }
         public void tomarFechaDesde(DateTime fechaDesde)
         {

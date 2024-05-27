@@ -193,8 +193,8 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private DateTimePicker dtFechaDesde;
-        private DateTimePicker dtFechaHasta;
+        private static DateTimePicker dtFechaDesde;
+        private static DateTimePicker dtFechaHasta;
         private Label label5;
         private Label label6;
         private ComboBox cmbReseña;
