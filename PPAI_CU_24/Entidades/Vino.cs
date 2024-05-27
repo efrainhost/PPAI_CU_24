@@ -34,6 +34,7 @@ namespace PPAI_CU_24.Entidades
 
 
         }
+        
 
         // Metodos set y get
         public void setNombre(string nombre)
@@ -76,18 +77,18 @@ namespace PPAI_CU_24.Entidades
             return vinosAprobados;
  
         }
-        public static obtenerInformacion(Vino vino)
+        
+        public  (string, string, string, string, List<string>) obtenerBodega(Vino vino)
         {
-            vino.getNombre();
-            vino.getPrecioARS();
-            obtenerBodega(vino);
-        }
-        public static string obtenerBodega()
-        {
-            Bodega.getNombre();
-            Varietal.getDescripcion();
-            Bodega.conocerRegion();
-            
+            List<string> descripciones = [];
+            string nombreBodega = vino.bodega.getNombre();
+            List<Varietal> varietales = vino.varietales;
+            foreach (Varietal var in varietales)
+            {
+                descripciones.Add(var.getDescripcion());
+            }
+            (string nombreRegion, string nombreProvinicia, string nombrePais) = Bodega.obtenerRegion(vino.bodega);
+            return (nombreBodega, nombreRegion, nombreProvinicia, nombrePais,descripciones);        
         }
     }
 

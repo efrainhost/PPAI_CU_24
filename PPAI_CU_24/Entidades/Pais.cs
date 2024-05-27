@@ -39,10 +39,7 @@ namespace PPAI_CU_24.Entidades
             this.nombre = nombre;
         }
         
-        public string getNombrePais()
-        {
-            provincia.get;
-        }
+  
         
     }
 }

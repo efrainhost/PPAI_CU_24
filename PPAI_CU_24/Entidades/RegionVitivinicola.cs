@@ -12,13 +12,16 @@ namespace PPAI_CU_24.Entidades
         public string descripcion { get; set; }
         private string nombre { get; set; }
 
+        private Provincia provincia { get; set; }   
+
         
 
         // Constructor 
-        public RegionVitivinicola(string descripcion, string nombre) 
+        public RegionVitivinicola(string descripcion, string nombre, Provincia provincia) 
         {
             this.descripcion = descripcion;
             this.nombre = nombre;   
+            this.provincia = provincia; 
         }
 
        
@@ -42,12 +45,12 @@ namespace PPAI_CU_24.Entidades
         {
             return this.descripcion;
         }
-
-        public static string getNombreRegion()
+        public static (string, string) obtenerProvincia(RegionVitivinicola region)
         {
-            return Provincia.obtenerPais();
+            string nombreProvincia = region.provincia.getNombreProvincia();
+            Provincia provincia = region.provincia;
+            string nombrePais = region.provincia.getNombrePais(provincia);
+            return (nombreProvincia, nombrePais);
         }
-
-
     }
 }

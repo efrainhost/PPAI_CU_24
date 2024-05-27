@@ -10,12 +10,12 @@ namespace PPAI_CU_24.Gestor
     public class GestorGeneradorRankings
     {
         // Atributos
-        public static List<float> promediosVino { get; set; }
+        public  List<float> promediosVino { get; set; }
         public static List<Vino> vinosConReseñaAprobada { get; set; }   
-        public static List<Vino> vinosOrdenados { get; set; }
-        public static List<Vino> mejoresDiezVinos { get; set; }
-        public static DateTime fechaDesde { get; set; }
-        public static DateTime fechaHasta { get; set; }
+        public  List<Vino> vinosOrdenados { get; set; }
+        public  List<Vino> mejoresDiezVinos { get; set; }
+        public  DateTime fechaDesde { get; set; }
+        public  DateTime fechaHasta { get; set; }
         public string reseñaSeleccionada { get; set; }
         public string visualizacionSeleccionada { get; set; }
         public string confirmacionReporte { get; set; }
@@ -23,8 +23,11 @@ namespace PPAI_CU_24.Gestor
         // Constructor 
 
 
-        
+        public GestorGeneradorRankings()
+        {
+           
 
+        }
         // Metodos
 
         public void opcGenerarRankingVinos()
@@ -94,9 +97,9 @@ namespace PPAI_CU_24.Gestor
         { 
             foreach (Vino vino in mejoresDiezVinos)
             {
-                vino.getNombre();
-                vino.getPrecioARS();
-                vino.obtenerBodega();
+                string nommbre = vino.getNombre();
+                float precio = vino.getPrecioARS();
+                (string, string, string, string, List<string>) tupla = vino.obtenerBodega(vino);
             }
         }
 

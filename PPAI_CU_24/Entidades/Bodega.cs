@@ -22,22 +22,26 @@ namespace PPAI_CU_24.Entidades
             // Inicializar relaciones
             this.regionVitivinicola = regionVitivinicola;
         }
+        
 
 
         // Metodos get y set
-        
+
         public void setNombre(string nombre)
         {
             this.nombre = nombre;
         }
-        public string getNombre()
+        public  string getNombre()
         {
             return this.nombre;
         }
 
-        public static string conocerRegion()
+        public static (string, string, string) obtenerRegion(Bodega bodega)
         {
-            return RegionVitivinicola.getNombreRegion();
+            string nombreRegion = bodega.regionVitivinicola.getNombre();
+            RegionVitivinicola region = bodega.regionVitivinicola;
+            (string nombreProvinicia, string nombrePais) = RegionVitivinicola.obtenerProvincia(region);
+            return (nombreRegion, nombreProvinicia, nombrePais);
         }
     }
 

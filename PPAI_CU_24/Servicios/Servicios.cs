@@ -12,7 +12,10 @@ namespace PPAI_CU_24.Servicios
         public  static List<Vino> GeneradorVinos()
         {
             
-            RegionVitivinicola Mendoza = new RegionVitivinicola("La región vitivinícola más grande y reconocida de Argentina, famosa por sus vinos tintos Malbec, Cabernet Sauvignon y Bonarda, así como vinos blancos como Chardonnay y Torrontés", "Mendoza");
+            
+            
+            
+            RegionVitivinicola Mendoza = new RegionVitivinicola("La región vitivinícola más grande y reconocida de Argentina, famosa por sus vinos tintos Malbec, Cabernet Sauvignon y Bonarda, así como vinos blancos como Chardonnay y Torrontés", "Mendoza",);
             RegionVitivinicola SanJuan = new RegionVitivinicola("Conocida por su producción de vinos tintos y blancos de alta calidad, incluyendo Syrah, Bonarda, y Sauvignon Blanc", "San Juan");
             RegionVitivinicola Salta = new RegionVitivinicola("Destacada por sus vinos de altura, especialmente los tintos elaborados con la uva Malbec y los blancos con Torrontés", "Salta");
             RegionVitivinicola LaRioja = new RegionVitivinicola("Reconocida por sus vinos tintos, especialmente los elaborados con la uva Bonarda, Syrah y Malbec", "La Rioja");
