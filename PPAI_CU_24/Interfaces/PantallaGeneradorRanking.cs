@@ -7,13 +7,18 @@ namespace PPAI_CU_24
 {
     public partial class PantallaGeneradorRanking : Form
     {
-        // Relaciones 
+        // Relaciones  
         public GestorGeneradorRankings gestorGeneradorRankings { get; set; }
         
         public PantallaGeneradorRanking(GestorGeneradorRankings gestorGeneradorRankings)
         {
             InitializeComponent();
             this.gestorGeneradorRankings = gestorGeneradorRankings;
+        }
+
+        private void habilitarPantalla()
+        {
+            this.Visible = true;
         }
 
         private void PantallaGeneradorRanking_Load(object sender, EventArgs e)
@@ -104,6 +109,7 @@ namespace PPAI_CU_24
             MessageBox.Show("Generacion exitosa");
             this.Hide();
         }
+
 
         public  DateTime tomarFechaDesde()
         {

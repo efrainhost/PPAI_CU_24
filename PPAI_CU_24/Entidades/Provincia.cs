@@ -12,19 +12,16 @@ namespace PPAI_CU_24.Entidades
         public string nombre { get; set; }
 
         // Relacion de agregación
-        public List<RegionVitivinicola> regiones { get; set; }
-        public RegionVitivinicola regionVitivinicola { get; set; }
-
-        private Pais pais { get; set; }
+        
+        public Pais pais { get; set; }
         
         // Constructor
-        public Provincia(string nombre, List<RegionVitivinicola> regiones, Pais pais)
+        public Provincia(string nombre, Pais pais)
         {
             // Inicializar atributos
             this.nombre = nombre;
 
             // Inicializar relacion
-            this.regiones = new List<RegionVitivinicola>();
 
             this.pais = pais;
         }   

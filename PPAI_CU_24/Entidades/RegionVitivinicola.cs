@@ -12,7 +12,7 @@ namespace PPAI_CU_24.Entidades
         public string descripcion { get; set; }
         private string nombre { get; set; }
 
-        private Provincia provincia { get; set; }   
+        public Provincia provincia { get; set; }   
 
         
 

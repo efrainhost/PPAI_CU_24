@@ -13,29 +13,29 @@ namespace PPAI_CU_24.Servicios
         {
             Pais Argentina = new Pais("Argentina");
 
-            Provincia BuenosAires = new Provincia("Buenos Aires", [], Argentina);
-            Provincia Catamarca = new Provincia("Catamarca", [], Argentina);
-            Provincia Chaco = new Provincia("Chaco", [], Argentina);
-            Provincia Chubut = new Provincia("Chubut", [], Argentina);
-            Provincia Cordoba = new Provincia("Cordoba", [], Argentina);
-            Provincia Corrientes = new Provincia("Corrientes", [], Argentina);
-            Provincia EntreRios = new Provincia("Entre Rios", [], Argentina);
-            Provincia Formosa = new Provincia("Formosa", [], Argentina);
-            Provincia Jujuy = new Provincia("Jujuy", [], Argentina);
-            Provincia LaPampa = new Provincia("La Pampa", [RegionLaPampa], Argentina);
-            Provincia LaRioja = new Provincia("La Rioja", [], Argentina);
-            Provincia Mendoza = new Provincia("Mendoza", [ZonaEsteMendoza], Argentina);
-            Provincia Misiones = new Provincia("Misiones", [], Argentina);
-            Provincia Neuquen = new Provincia("Neuquen", [RegionNeuquen], Argentina);
-            Provincia RioNegro = new Provincia("Rio Negro", [RegionRioNegro, RegionPatagonia], Argentina);
-            Provincia Salta = new Provincia("Salta", [], Argentina);
-            Provincia SanJuan = new Provincia("San Juan", [RegionSanJuan], Argentina);
-            Provincia SanLuis = new Provincia("San Luis", [], Argentina);
-            Provincia SantaCruz = new Provincia("Santa Cruz", [], Argentina);
-            Provincia SantaFe = new Provincia("Santa Fe", [], Argentina);
-            Provincia SantiagoDelEstero = new Provincia("Santiago del Estero", [], Argentina);
-            Provincia TierraDelFuego = new Provincia("Tierra del Fuego", [], Argentina);
-            Provincia Tucuman = new Provincia("Tucuman", [], Argentina);
+            Provincia BuenosAires = new Provincia("Buenos Aires", Argentina);
+            Provincia Catamarca = new Provincia("Catamarca", Argentina);
+            Provincia Chaco = new Provincia("Chaco", Argentina);
+            Provincia Chubut = new Provincia("Chubut", Argentina);
+            Provincia Cordoba = new Provincia("Cordoba", Argentina);
+            Provincia Corrientes = new Provincia("Corrientes", Argentina);
+            Provincia EntreRios = new Provincia("Entre Rios", Argentina);
+            Provincia Formosa = new Provincia("Formosa", Argentina);
+            Provincia Jujuy = new Provincia("Jujuy", Argentina);
+            Provincia LaPampa = new Provincia("La Pampa", Argentina);
+            Provincia LaRioja = new Provincia("La Rioja", Argentina);
+            Provincia Mendoza = new Provincia("Mendoza", Argentina);
+            Provincia Misiones = new Provincia("Misiones", Argentina);
+            Provincia Neuquen = new Provincia("Neuquen",  Argentina);
+            Provincia RioNegro = new Provincia("Rio Negro", Argentina);
+            Provincia Salta = new Provincia("Salta",  Argentina);
+            Provincia SanJuan = new Provincia("San Juan",  Argentina);
+            Provincia SanLuis = new Provincia("San Luis", Argentina);
+            Provincia SantaCruz = new Provincia("Santa Cruz",  Argentina);
+            Provincia SantaFe = new Provincia("Santa Fe", Argentina);
+            Provincia SantiagoDelEstero = new Provincia("Santiago del Estero", Argentina);
+            Provincia TierraDelFuego = new Provincia("Tierra del Fuego",  Argentina);
+            Provincia Tucuman = new Provincia("Tucuman",  Argentina);
 
 
             RegionVitivinicola RegionLaPampa = new RegionVitivinicola("Esta región se encuentra en el centro de Argentina y es conocida por su clima semiárido, ideal para el cultivo de uvas", "RegionLaPampa", LaPampa);
@@ -45,9 +45,7 @@ namespace PPAI_CU_24.Servicios
             RegionVitivinicola ZonaEsteMendoza = new RegionVitivinicola(" La zona Este se distingue por su diversidad de suelos y microclimas, dando lugar a vinos varietales excepcionales.", "ZonaEsteMendoza", Mendoza);
             RegionVitivinicola RegionSanJuan = new RegionVitivinicola("Sus viñedos se benefician de la radiación solar intensa y las condiciones áridas que favorecen la calidad de las uvas.", "RegionSanJuan", SanJuan);
             
-       
-
-            
+     
            
 
             Bodega CatenaZapata = new Bodega("Catena Zapata", ZonaEsteMendoza);

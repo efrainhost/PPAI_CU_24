@@ -11,19 +11,10 @@ namespace PPAI_CU_24.Entidades
         // Atributos
         public string nombre { get; set; }
 
-        // Relacion de agregación 
-        public List<Provincia> provincias { get; set; } 
-        public Provincia provincia { get; set; }
-
-
-
-        public Pais(string nombre, List<Provincia> provincias)
+        public Pais(string nombre)
         {
             // Inicializar atributos
             this.nombre = nombre;
-
-            // Inicializar relacion
-            this.provincias = provincias;
 
         }
 
@@ -33,13 +24,19 @@ namespace PPAI_CU_24.Entidades
             return this.nombre;
         }
 
-        public void setNombre( string nombre)
+        public void setNombre(string nombre)
         {
 
             this.nombre = nombre;
         }
-        
-  
-        
+
     }
+
+
+
+
+
+
 }
+
+
