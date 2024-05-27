@@ -18,6 +18,7 @@ namespace PPAI_CU_24.Entidades
         public Bodega bodega { get; set; }
         public List<Varietal> varietales { get; set; }
         public List<Reseña> reseñas { get; set; }
+        public GestorGeneradorRankings gestorGeneradorRankings { get; set; }    
 
 
         // Constructor
@@ -31,6 +32,11 @@ namespace PPAI_CU_24.Entidades
             this.bodega = bodega;
             this.varietales = varietales;
             this.reseñas = reseñas;
+            GestorGeneradorRankings gestorGeneradorRankings = new GestorGeneradorRankings();
+            this.gestorGeneradorRankings = gestorGeneradorRankings;
+
+
+
 
 
         }
@@ -67,7 +73,7 @@ namespace PPAI_CU_24.Entidades
             {
                 if (vino.reseñas.Count > 0)
                 {
-                    List<Reseña> reseñasAprobadas = Reseña.buscarReseña(vino, GestorGeneradorRankings.fechaDesde, GestorGeneradorRankings.fechaHasta);
+                    List<Reseña> reseñasAprobadas = Reseña.buscarReseña(vino, GestorGeneradorRankings.obtenerFechaDesde(), GestorGeneradorRankings.obtenerFechaHasta());
                     if (reseñasAprobadas.Count > 0)
                     {
                         vinosAprobados.Add(vino);

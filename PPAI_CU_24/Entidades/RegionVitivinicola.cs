@@ -9,7 +9,7 @@ namespace PPAI_CU_24.Entidades
     public class RegionVitivinicola
     {
         // Atributos
-        public string descripcion { get; set; }
+        private string descripcion { get; set; }
         private string nombre { get; set; }
 
         public Provincia provincia { get; set; }   

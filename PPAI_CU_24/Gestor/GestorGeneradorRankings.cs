@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PPAI_CU_24.Interfaces;
 using PPAI_CU_24.Entidades;
 
 namespace PPAI_CU_24.Gestor
@@ -10,45 +11,54 @@ namespace PPAI_CU_24.Gestor
     public class GestorGeneradorRankings
     {
         // Atributos
-        public  List<float> promediosVino { get; set; }
-        public static List<Vino> vinosConReseñaAprobada { get; set; }   
-        public  List<Vino> vinosOrdenados { get; set; }
-        public static List<Vino> mejoresDiezVinos { get; set; }
-        public  DateTime fechaDesde { get; set; }
-        public  DateTime fechaHasta { get; set; }
-        public string reseñaSeleccionada { get; set; }
-        public string visualizacionSeleccionada { get; set; }
-        public string confirmacionReporte { get; set; }
-
-        // Constructor 
-
+        private List<float> promediosVino { get; set; }
+        private static List<Vino>? vinosConReseñaAprobada { get; set; }
+        private List<Vino>? vinosOrdenados { get; set; }
+        private static List<Vino> mejoresDiezVinos { get; set; }
+        private static DateTime fechaDesde { get; set; }
+        private static DateTime fechaHasta { get; set; }
+        private string reseñaSeleccionada { get; set; }
+        private string visualizacionSeleccionada { get; set; }
+        private string confirmacionReporte { get; set; }
 
         public GestorGeneradorRankings()
         {
-           
-
+            promediosVino = new List<float>();
+            vinosOrdenados = new List<Vino>();
+            reseñaSeleccionada = string.Empty;
+            visualizacionSeleccionada = string.Empty;
+            confirmacionReporte = string.Empty;
         }
-        // Metodos
 
-        public void opcGenerarRankingVinos()
+
+
+        public static void opcGenerarRankingVinos()
         {
-
-
-            buscarVinosConReseñas();
-            calcularPromedioCalificaciones();
-            ordenarVinosPorCalificacion();
-            filtrarMejoresDiezVinos();
-            buscarInformacionVinos();
-            finCU();
+            var gestor = new GestorGeneradorRankings();
+            gestor.buscarVinosConReseñas();
+            gestor.calcularPromedioCalificaciones();
+            gestor.ordenarVinosPorCalificacion();
+            gestor.filtrarMejoresDiezVinos();
+            gestor.buscarInformacionVinos();
+            gestor.finCU();
+        }
+        public static DateTime obtenerFechaDesde()
+        {
+            return fechaDesde;
         }
 
+        // Método para obtener la fecha hasta
+        public static DateTime obtenerFechaHasta()
+        {
+            return fechaHasta;
+        }
         public void tomarFechaDesde(DateTime fechaDesde)
         {
-            this.fechaDesde = fechaDesde;
+            GestorGeneradorRankings.fechaDesde = fechaDesde;
         }
         public void tomarFechaHasta(DateTime fechaHasta)
         {
-            this.fechaHasta = fechaHasta;
+            GestorGeneradorRankings.fechaHasta = fechaHasta;
         }
 
         public void tomarSelecTipoReseña(string reseñaSeleccionada)
@@ -64,44 +74,45 @@ namespace PPAI_CU_24.Gestor
             this.confirmacionReporte = confirmacionReporte;
         }
 
-        public static void  buscarVinosConReseñas()
+        private void buscarVinosConReseñas()
         {
             vinosConReseñaAprobada = Vino.buscarVinosConReseñas();
         }
 
-        public void calcularPromedioCalificaciones()
+        private void calcularPromedioCalificaciones()
         {
             int cantidad = 0;
             int puntajeTot = 0;
-            
 
             foreach (Vino vino in vinosConReseñaAprobada)
             {
                 foreach (Reseña rese in vino.reseñas)
                 {
                     cantidad += 1;
-                    puntajeTot += rese.puntaje;
+                    puntajeTot += rese.getPuntaje();
                 }
                 promediosVino.Add(puntajeTot / cantidad);
             }
         }
 
-        public void ordenarVinosPorCalificacion()
+        private void ordenarVinosPorCalificacion()
         {
             vinosOrdenados = promediosVino
                 .OrderByDescending(promedio => promedio) // Ordena de mayor a menor promedio
                 .Select(promedio => vinosConReseñaAprobada[promediosVino.IndexOf(promedio)]) // Obtiene los vinos según el índice del promedio
                 .ToList();
-
         }
 
-        public void filtrarMejoresDiezVinos()
+        private void filtrarMejoresDiezVinos()
         {
             mejoresDiezVinos = vinosOrdenados.Take(10).ToList();
-
         }
-        public void buscarInformacionVinos() 
-        { 
+        public List<Vino> mejoresDiez()
+        {
+            return mejoresDiezVinos;
+        }
+        private void buscarInformacionVinos()
+        {
             foreach (Vino vino in mejoresDiezVinos)
             {
                 string nommbre = vino.getNombre();
@@ -110,17 +121,17 @@ namespace PPAI_CU_24.Gestor
             }
         }
 
-        public void generarExcelRanking() 
+        private void generarExcelRanking()
         {
         }
 
 
 
-        public void finCU()
+        private void finCU()
         {
             MessageBox.Show("Ranking generado exitosamente!");
         }
-        
+
 
 
     }

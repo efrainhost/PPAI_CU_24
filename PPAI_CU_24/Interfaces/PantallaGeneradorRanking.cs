@@ -9,11 +9,13 @@ namespace PPAI_CU_24
     {
         // Relaciones  
         public GestorGeneradorRankings gestorGeneradorRankings { get; set; }
-        
-        public PantallaGeneradorRanking(GestorGeneradorRankings gestorGeneradorRankings)
+
+        public PantallaGeneradorRanking()
         {
             InitializeComponent();
+            GestorGeneradorRankings gestorGeneradorRankings = new GestorGeneradorRankings();
             this.gestorGeneradorRankings = gestorGeneradorRankings;
+            
         }
 
         private void habilitarPantalla()
@@ -70,12 +72,13 @@ namespace PPAI_CU_24
             if (fechaValida && reseñaSeleccionada && tipoVisualizacionSeleccionada)
             {
                 solicitarConfirmacionReporte();
+                GestorGeneradorRankings.opcGenerarRankingVinos();
 
                 // Crear una instancia de la nueva pantalla
                 var formVisualizacionVinos = new PantallaVisualizacionVinos();
 
                 // Obtener los mejores diez vinos del gestor
-                List<Vino> mejoresVinos = GestorGeneradorRankings.mejoresDiezVinos;
+                List<Vino> mejoresVinos = gestorGeneradorRankings.mejoresDiez();
 
                 // Llenar el DataGridView de la nueva pantalla con los datos de los vinos
                 foreach (var vino in mejoresVinos)

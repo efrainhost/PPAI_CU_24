@@ -9,7 +9,7 @@ namespace PPAI_CU_24.Entidades
     public class Pais
     {
         // Atributos
-        public string nombre { get; set; }
+        private string nombre { get; set; }
 
         public Pais(string nombre)
         {

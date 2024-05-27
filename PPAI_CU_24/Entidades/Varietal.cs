@@ -9,7 +9,7 @@ namespace PPAI_CU_24.Entidades
     public class Varietal
     {
         // Atributos
-        public string descripcion;
+        private string descripcion;
 
         // Constructos
         public Varietal(string descripcion) 

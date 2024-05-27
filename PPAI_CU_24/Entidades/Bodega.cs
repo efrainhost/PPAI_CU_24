@@ -9,7 +9,7 @@ namespace PPAI_CU_24.Entidades
     public class Bodega
     {
         // Atributos
-        public string nombre { get; set; }
+        private string nombre { get; set; }
 
         // Relacion 
         public RegionVitivinicola regionVitivinicola { get; set; }

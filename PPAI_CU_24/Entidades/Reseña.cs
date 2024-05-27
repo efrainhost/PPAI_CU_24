@@ -9,9 +9,9 @@ namespace PPAI_CU_24.Entidades
     public class Reseña
     {
         // Atributos
-        public bool esPremium { get; set; }
+        private bool esPremium { get; set; }
         private DateTime fechaReseña { get; set; }
-        public int puntaje { get; set; }
+        private int puntaje { get; set; }
 
         // Constructor
         public Reseña(bool esPremium, DateTime fechaReseña, int puntaje)
