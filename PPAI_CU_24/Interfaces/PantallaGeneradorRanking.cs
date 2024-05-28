@@ -40,18 +40,18 @@ namespace PPAI_CU_24
             bool reseñaSeleccionada = false;
             bool tipoVisualizacionSeleccionada = false;
 
-            bool resultado = ValidarPeriodo(tomarFechaDesde(),tomarFechaHasta());
+            bool resultado = ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
             if (resultado)
             {
                 fechaValida = true;
-                
+
             }
             else
             {
                 MessageBox.Show("Fechas invalidas");
             }
 
-            if (tomarTipoReseña() == "")
+            if (tomarSelecTipoReseña() == "")
             {
                 MessageBox.Show("Debe seleccionar un tipo de reseña");
             }
@@ -60,7 +60,7 @@ namespace PPAI_CU_24
                 reseñaSeleccionada = true;
             }
 
-            if (tomarTipoVisualizacion() == "")
+            if (tomarSelecTipoVisualizacion() == "")
             {
                 MessageBox.Show("Debe seleccionar un tipo de visualizacion");
             }
@@ -71,44 +71,59 @@ namespace PPAI_CU_24
 
             if (fechaValida && reseñaSeleccionada && tipoVisualizacionSeleccionada)
             {
-                solicitarConfirmacionReporte();
+                bool conf = tomarConfirmacionReporte();
+                if (conf)
+                {
+                    opcGenerarRankingVinos();
+                }
+                else
+                {
+                    this.Close();
+                }
+
+            }
+        }
+        public void opcGenerarRankingVinos()
+        {
                 GestorGeneradorRankings.opcGenerarRankingVinos();
 
-                // Crear una instancia de la nueva pantalla
+                    
                 var formVisualizacionVinos = new PantallaVisualizacionVinos();
 
-                // Obtener los mejores diez vinos del gestor
                 List<Vino> mejoresVinos = gestorGeneradorRankings.mejoresDiez();
 
-                // Llenar el DataGridView de la nueva pantalla con los datos de los vinos
+                    
                 foreach (var vino in mejoresVinos)
                 {
-                    List<Varietal> var = []; 
+                    List<Varietal> var = [];
                     foreach (Varietal varietal in vino.varietales)
                     {
                         var.Add(varietal);
                     }
-                    formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), var, vino.bodega.getNombre());
+
+                    (string nombreBodega, string nombreRegion, string nombreProvincia, string nombrePais, List<string> descripciones) = vino.obtenerBodega();
+                    string descripcionesString = string.Join(", ", descripciones);
+
+                    formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), descripcionesString, vino.calificacionPromedio(), vino.bodega.getNombre(), nombreRegion, nombrePais);
                 }
-
-                // Mostrar la nueva pantalla
-                formVisualizacionVinos.Show();
-            }
-
-            }
-        public void opcGenerarRankingVinos()
-        {
-            
+                    
+                    
+                 formVisualizacionVinos.Show();
+                 informarGeneracionExitosa();
         }
-        private void solicitarConfirmacionReporte()
+             
+        private bool tomarConfirmacionReporte()
         {
             if (MessageBox.Show("¿Desea confirmar generacion de reporte?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                informarGeneracionExitosa();
+                
+                return true;
             }
             else
             {
+       
                 MessageBox.Show("Se cancela la operacion");
+                return false;
             }
         }
 
@@ -128,12 +143,12 @@ namespace PPAI_CU_24
             return dtFechaHasta.Value;
         }
 
-        private string tomarTipoReseña()
+        private string tomarSelecTipoReseña()
         {
             return cmbReseña.Text;
         }
 
-        private string tomarTipoVisualizacion()
+        private string tomarSelecTipoVisualizacion()
         {
             return cmbTipoVisualizacion.Text;
         }

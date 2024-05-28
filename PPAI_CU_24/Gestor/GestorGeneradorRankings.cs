@@ -17,7 +17,7 @@ namespace PPAI_CU_24.Gestor
         private static List<Vino> mejoresDiezVinos { get; set; }
         private static DateTime fechaDesde { get; set; }
         private static DateTime fechaHasta { get; set; }
-        private string reseñaSeleccionada { get; set; }
+        private string tipoReseñaSeleccionada { get; set; }
         private string visualizacionSeleccionada { get; set; }
         private string confirmacionReporte { get; set; }
         public PantallaGeneradorRanking pantallaGeneradorRanking { get; set; }
@@ -26,7 +26,7 @@ namespace PPAI_CU_24.Gestor
         {
             promediosVino = new List<float>();
             vinosOrdenados = new List<Vino>();
-            reseñaSeleccionada = string.Empty;
+            tipoReseñaSeleccionada = string.Empty;
             visualizacionSeleccionada = string.Empty;
             confirmacionReporte = string.Empty;
         }
@@ -66,7 +66,7 @@ namespace PPAI_CU_24.Gestor
 
         public void tomarSelecTipoReseña(string reseñaSeleccionada)
         {
-            this.reseñaSeleccionada = reseñaSeleccionada;
+            this.tipoReseñaSeleccionada = reseñaSeleccionada;
         }
         public void tomarSelecTipoVisualizacion(string visualizacionSeleccionada)
         {
@@ -84,25 +84,33 @@ namespace PPAI_CU_24.Gestor
 
         private void calcularPromedioCalificaciones()
         {
-            int cantidad = 0;
-            int puntajeTot = 0;
 
             foreach (Vino vino in vinosConReseñaAprobada)
             {
+                int cantidad = 0;
+                int puntajeTot = 0;
                 foreach (Reseña rese in vino.reseñas)
                 {
                     cantidad += 1;
                     puntajeTot += rese.getPuntaje();
+
                 }
+
                 promediosVino.Add(puntajeTot / cantidad);
+
+
+
             }
         }
 
         private void ordenarVinosPorCalificacion()
         {
             vinosOrdenados = promediosVino
-                .OrderByDescending(promedio => promedio) // Ordena de mayor a menor promedio
-                .Select(promedio => vinosConReseñaAprobada[promediosVino.IndexOf(promedio)]) // Obtiene los vinos según el índice del promedio
+                .Select((promedio, index) => new { Promedio = promedio, Indice = index }) // Asocia cada promedio con su índice
+                .OrderByDescending(item => item.Promedio) // Ordena de mayor a menor promedio
+                .Select(item => item.Indice) // Obtiene los índices de los vinos ordenados por promedio
+                .Distinct() // Elimina duplicados
+                .SelectMany<int, Vino>((index, wineIndex) => new List<Vino> { vinosConReseñaAprobada[index] }) // Obtiene los vinos según los índices ordenados
                 .ToList();
         }
 
@@ -120,7 +128,7 @@ namespace PPAI_CU_24.Gestor
             {
                 string nommbre = vino.getNombre();
                 float precio = vino.getPrecioARS();
-                (string, string, string, string, List<string>) tupla = vino.obtenerBodega(vino);
+                (string, string, string, string, List<string>) tupla = vino.obtenerBodega();
             }
         }
 
@@ -134,8 +142,5 @@ namespace PPAI_CU_24.Gestor
         {
             MessageBox.Show("Ranking generado exitosamente!");
         }
-
-
-
     }
 }

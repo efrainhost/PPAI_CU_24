@@ -40,6 +40,7 @@
             label7 = new Label();
             btnGenerar = new Button();
             cmbTipoVisualizacion = new ComboBox();
+            label8 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -142,12 +143,12 @@
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(557, 672);
+            btnGenerar.Location = new Point(511, 638);
             btnGenerar.Margin = new Padding(5, 6, 5, 6);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(140, 81);
             btnGenerar.TabIndex = 11;
-            btnGenerar.Text = "Generar ranking";
+            btnGenerar.Text = "Generar Ranking";
             btnGenerar.UseVisualStyleBackColor = true;
             btnGenerar.Click += btnGenerar_Click;
             // 
@@ -161,11 +162,22 @@
             cmbTipoVisualizacion.Size = new Size(243, 40);
             cmbTipoVisualizacion.TabIndex = 12;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(218, 507);
+            label8.Margin = new Padding(5, 0, 5, 0);
+            label8.Name = "label8";
+            label8.Size = new Size(66, 32);
+            label8.TabIndex = 13;
+            label8.Text = "Tipo:";
+            // 
             // PantallaGeneradorRanking
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1171, 861);
+            Controls.Add(label8);
             Controls.Add(cmbTipoVisualizacion);
             Controls.Add(btnGenerar);
             Controls.Add(label7);
@@ -193,13 +205,14 @@
         private Label label2;
         private Label label3;
         private Label label4;
-        private static DateTimePicker dtFechaDesde;
-        private static DateTimePicker dtFechaHasta;
         private Label label5;
         private Label label6;
         private ComboBox cmbReseña;
         private Label label7;
         private Button btnGenerar;
         private ComboBox cmbTipoVisualizacion;
+        private Label label8;
+        private static DateTimePicker dtFechaDesde;
+        private static DateTimePicker dtFechaHasta;
     }
 }

@@ -11,21 +11,17 @@ namespace PPAI_CU_24.Entidades
         // Atributos
         private string descripcion { get; set; }
         private string nombre { get; set; }
-
-        public Provincia provincia { get; set; }   
-
-        
+        public Provincia provincia { get; set; }
 
         // Constructor 
-        public RegionVitivinicola(string descripcion, string nombre, Provincia provincia) 
+        public RegionVitivinicola(string descripcion, string nombre, Provincia provincia)
         {
             this.descripcion = descripcion;
-            this.nombre = nombre;   
-            this.provincia = provincia; 
+            this.nombre = nombre;
+            this.provincia = provincia;
         }
 
-       
-        // Metodos set y get
+        // Métodos set y get
         public void setNombre(string nombre)
         {
             this.nombre = nombre;
@@ -45,12 +41,14 @@ namespace PPAI_CU_24.Entidades
         {
             return this.descripcion;
         }
-        public static (string, string) obtenerProvincia(RegionVitivinicola region)
+
+        // Método para obtener nombre de provincia y país
+        public (string, string) obtenerProvincia()
         {
-            string nombreProvincia = region.provincia.getNombreProvincia();
-            Provincia provincia = region.provincia;
-            string nombrePais = region.provincia.getNombrePais(provincia);
+            string nombreProvincia = this.provincia.getNombreProvincia();
+            string nombrePais = this.provincia.getNombrePais();
             return (nombreProvincia, nombrePais);
         }
     }
+
 }

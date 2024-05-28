@@ -32,7 +32,10 @@
             NombreVino = new DataGridViewTextBoxColumn();
             Precio = new DataGridViewTextBoxColumn();
             Varietales = new DataGridViewTextBoxColumn();
+            Calificacion = new DataGridViewTextBoxColumn();
             NombreBodega = new DataGridViewTextBoxColumn();
+            NombreRegion = new DataGridViewTextBoxColumn();
+            NombrePais = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvVinos).BeginInit();
             SuspendLayout();
             // 
@@ -41,13 +44,13 @@
             dgvVinos.AllowUserToAddRows = false;
             dgvVinos.AllowUserToDeleteRows = false;
             dgvVinos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVinos.Columns.AddRange(new DataGridViewColumn[] { NombreVino, Precio, Varietales, NombreBodega });
+            dgvVinos.Columns.AddRange(new DataGridViewColumn[] { NombreVino, Precio, Varietales, Calificacion, NombreBodega, NombreRegion, NombrePais });
             dgvVinos.Dock = DockStyle.Fill;
             dgvVinos.Location = new Point(0, 0);
             dgvVinos.Name = "dgvVinos";
             dgvVinos.ReadOnly = true;
             dgvVinos.RowHeadersWidth = 82;
-            dgvVinos.Size = new Size(1532, 1015);
+            dgvVinos.Size = new Size(1878, 1015);
             dgvVinos.TabIndex = 0;
             // 
             // NombreVino
@@ -56,7 +59,7 @@
             NombreVino.MinimumWidth = 10;
             NombreVino.Name = "NombreVino";
             NombreVino.ReadOnly = true;
-            NombreVino.Width = 200;
+            NombreVino.Width = 400;
             // 
             // Precio
             // 
@@ -72,7 +75,15 @@
             Varietales.MinimumWidth = 10;
             Varietales.Name = "Varietales";
             Varietales.ReadOnly = true;
-            Varietales.Width = 200;
+            Varietales.Width = 350;
+            // 
+            // Calificacion
+            // 
+            Calificacion.HeaderText = "Calificacion";
+            Calificacion.MinimumWidth = 10;
+            Calificacion.Name = "Calificacion";
+            Calificacion.ReadOnly = true;
+            Calificacion.Width = 200;
             // 
             // NombreBodega
             // 
@@ -80,15 +91,32 @@
             NombreBodega.MinimumWidth = 10;
             NombreBodega.Name = "NombreBodega";
             NombreBodega.ReadOnly = true;
-            NombreBodega.Width = 200;
+            NombreBodega.Width = 250;
+            // 
+            // NombreRegion
+            // 
+            NombreRegion.HeaderText = "Region";
+            NombreRegion.MinimumWidth = 10;
+            NombreRegion.Name = "NombreRegion";
+            NombreRegion.ReadOnly = true;
+            NombreRegion.Width = 200;
+            // 
+            // NombrePais
+            // 
+            NombrePais.HeaderText = "Pais";
+            NombrePais.MinimumWidth = 10;
+            NombrePais.Name = "NombrePais";
+            NombrePais.ReadOnly = true;
+            NombrePais.Width = 200;
             // 
             // PantallaVisualizacionVinos
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1532, 1015);
+            ClientSize = new Size(1878, 1015);
             Controls.Add(dgvVinos);
             Name = "PantallaVisualizacionVinos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "PantallaVisualizacionVinos";
             ((System.ComponentModel.ISupportInitialize)dgvVinos).EndInit();
             ResumeLayout(false);
@@ -100,6 +128,9 @@
         private DataGridViewTextBoxColumn NombreVino;
         private DataGridViewTextBoxColumn Precio;
         private DataGridViewTextBoxColumn Varietales;
+        private DataGridViewTextBoxColumn Calificacion;
         private DataGridViewTextBoxColumn NombreBodega;
+        private DataGridViewTextBoxColumn NombreRegion;
+        private DataGridViewTextBoxColumn NombrePais;
     }
 }
