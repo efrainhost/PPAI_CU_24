@@ -51,7 +51,7 @@
             dgvVinos.Name = "dgvVinos";
             dgvVinos.ReadOnly = true;
             dgvVinos.RowHeadersWidth = 82;
-            dgvVinos.Size = new Size(1878, 1015);
+            dgvVinos.Size = new Size(1984, 1015);
             dgvVinos.TabIndex = 0;
             // 
             // NombreVino
@@ -100,7 +100,7 @@
             NombreRegion.MinimumWidth = 10;
             NombreRegion.Name = "NombreRegion";
             NombreRegion.ReadOnly = true;
-            NombreRegion.Width = 200;
+            NombreRegion.Width = 300;
             // 
             // NombrePais
             // 
@@ -114,7 +114,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1878, 1015);
+            ClientSize = new Size(1984, 1015);
             Controls.Add(dgvVinos);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PantallaVisualizacionVinos";

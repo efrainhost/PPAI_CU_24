@@ -12,14 +12,14 @@ namespace PPAI_CU_24.Entidades
     {
         // Atributos
         private string nombre { get; set; }
-        public float precioARS { get; set; }
+        private float precioARS { get; set; }
 
         // Relaciones 
         public Bodega bodega { get; set; }
         public List<Varietal> varietales { get; set; }
         public List<Reseña> reseñas { get; set; }
-        public GestorGeneradorRankings gestorGeneradorRankings { get; set; }
-
+       
+        
 
         // Constructor
         public Vino(string nombre, float precioARS, Bodega bodega, List<Varietal> varietales, List<Reseña> reseñas)
@@ -32,8 +32,6 @@ namespace PPAI_CU_24.Entidades
             this.bodega = bodega;
             this.varietales = varietales;
             this.reseñas = reseñas;
-            GestorGeneradorRankings gestorGeneradorRankings = new GestorGeneradorRankings();
-            this.gestorGeneradorRankings = gestorGeneradorRankings;
         }
 
 

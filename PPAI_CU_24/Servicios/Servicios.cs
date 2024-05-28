@@ -130,7 +130,7 @@ namespace PPAI_CU_24.Servicios
             Vino LasPerdicesMalbec = new Vino("Las Perdices Malbec", 1300, LasPerdices, [UvaMalbec, UvaCabernetSauvignon], [resUno, resDos]);
             Vino GraffignaCentenarioMalbec = new Vino("Graffigna Centenario Malbec", 1500, Graffigna, [UvaMalbec], [resTres, resCuatro]);
             Vino ColomeEstateMalbec = new Vino("Colomé Estate Malbec", 1600, Colome, [UvaMalbec], [resCinco, resSeis]);
-            Vino LaRiojaAltaVinaArdanzaReserva = new Vino("La Rioja Alta Viña Ardanza Reserva", 1800, LaRiojaAlta, [], [resSiete, resOcho]);
+            Vino LaRiojaAltaVinaArdanzaReserva = new Vino("La Rioja Alta Viña Ardanza Reserva", 1800, LaRiojaAlta, [UvaBarbera], [resSiete, resOcho]);
             Vino ElEstecoDonDavidMalbec = new Vino("El Esteco Don David Malbec", 1700,ElEsteco, [UvaMalbec], [resNueve,resDiez]);
             Vino HumbertoCanaleOldVineMalbec = new Vino("Humberto Canale Old Vine Malbec", 1800, HumbertoCanale, [UvaMalbec], [resOnce, resDoce]);
             Vino DelFinDelMundoGranReservaMalbec = new Vino("Del Fin del Mundo Gran Reserva Malbec", 1900, DelFinDelMundo, [UvaMalbec], [resTrece, resCatorce]);

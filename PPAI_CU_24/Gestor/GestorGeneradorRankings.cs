@@ -23,6 +23,9 @@ namespace PPAI_CU_24.Gestor
 
         // Relaciones
         public PantallaGeneradorRanking pantallaGeneradorRanking { get; set; }
+        public PantallaVisualizacionVinos pantallaVisualizacionVinos { get; set; }  
+        public Vino vino { get; set; }
+
 
         // Constructor
         public GestorGeneradorRankings()
@@ -56,6 +59,7 @@ namespace PPAI_CU_24.Gestor
             DateTime fecha = PantallaGeneradorRanking.tomarFechaHasta();
             return fecha;
         }
+
         public void tomarFechaDesde(DateTime fechaDesde)
         {
             GestorGeneradorRankings.fechaDesde = fechaDesde;
@@ -105,11 +109,11 @@ namespace PPAI_CU_24.Gestor
         private void ordenarVinosPorCalificacion()
         {
             vinosOrdenados = promediosVino
-                .Select((promedio, index) => new { Promedio = promedio, Indice = index }) // Asocia cada promedio con su índice
-                .OrderByDescending(item => item.Promedio) // Ordena de mayor a menor promedio
-                .Select(item => item.Indice) // Obtiene los índices de los vinos ordenados por promedio
-                .Distinct() // Elimina duplicados
-                .SelectMany<int, Vino>((index, wineIndex) => new List<Vino> { vinosConReseñaAprobada[index] }) // Obtiene los vinos según los índices ordenados
+                .Select((promedio, index) => new { Promedio = promedio, Indice = index }) 
+                .OrderByDescending(item => item.Promedio) 
+                .Select(item => item.Indice) 
+                .Distinct() 
+                .SelectMany<int, Vino>((index, wineIndex) => new List<Vino> { vinosConReseñaAprobada[index] }) 
                 .ToList();
         }
 
@@ -123,12 +127,24 @@ namespace PPAI_CU_24.Gestor
         }
         private void buscarInformacionVinos()
         {
+            var formVisualizacionVinos = new PantallaVisualizacionVinos();
             foreach (Vino vino in mejoresDiezVinos)
             {
                 string nommbre = vino.getNombre();
                 float precio = vino.getPrecioARS();
                 (string, string, string, string, List<string>) tupla = vino.obtenerBodega();
+                List<Varietal> var = [];
+                foreach (Varietal varietal in vino.varietales)
+                {
+                    var.Add(varietal);
+                }
+
+                (string nombreBodega, string nombreRegion, string nombreProvincia, string nombrePais, List<string> descripciones) = vino.obtenerBodega();
+                string descripcionesString = string.Join(", ", descripciones);
+                
+                formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), descripcionesString, vino.calificacionPromedio(), nombreBodega, nombreRegion, nombrePais);
             }
+            formVisualizacionVinos.Show();
         }
 
         private void generarExcelRanking()
@@ -136,6 +152,7 @@ namespace PPAI_CU_24.Gestor
             // Se trabajara con esta funcion mas adelante
         }
 
+        // VER
         public void finCU()
         {
             MessageBox.Show("Finalizó el caso de uso");

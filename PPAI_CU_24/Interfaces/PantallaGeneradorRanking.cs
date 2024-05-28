@@ -34,7 +34,7 @@ namespace PPAI_CU_24
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             bool fechaValida = false;
-            bool reseñaSeleccionada = false;
+            bool tipoReseñaSeleccionada = false;
             bool tipoVisualizacionSeleccionada = false;
             bool flujocorrecto = false;
 
@@ -54,7 +54,7 @@ namespace PPAI_CU_24
             }
             else
             {
-                reseñaSeleccionada = true;
+                tipoReseñaSeleccionada = true;
             }
 
             if (tomarSelecTipoVisualizacion() == "")
@@ -66,7 +66,7 @@ namespace PPAI_CU_24
                 tipoVisualizacionSeleccionada = true;
             }
 
-            if (tomarSelecTipoReseña() == "de Sommeliers" && tomarSelecTipoVisualizacion() == "Pantalla")
+            if (tomarSelecTipoReseña() == "de Sommeliers" && tomarSelecTipoVisualizacion() == "Excel")
             {
                 flujocorrecto = true;
             }
@@ -77,7 +77,8 @@ namespace PPAI_CU_24
             }
 
 
-            if (fechaValida && reseñaSeleccionada && tipoVisualizacionSeleccionada && flujocorrecto)
+            if (fechaValida && tipoReseñaSeleccionada && tipoVisualizacionSeleccionada && flujocorrecto)
+
             {
                 bool conf = tomarConfirmacionReporte();
                 if (conf)
@@ -101,29 +102,6 @@ namespace PPAI_CU_24
         public void opcGenerarRankingVinos()
         {
             GestorGeneradorRankings.opcGenerarRankingVinos();
-
-
-            var formVisualizacionVinos = new PantallaVisualizacionVinos();
-
-            List<Vino> mejoresVinos = gestorGeneradorRankings.mejoresDiez();
-
-
-            foreach (var vino in mejoresVinos)
-            {
-                List<Varietal> var = [];
-                foreach (Varietal varietal in vino.varietales)
-                {
-                    var.Add(varietal);
-                }
-
-                (string nombreBodega, string nombreRegion, string nombreProvincia, string nombrePais, List<string> descripciones) = vino.obtenerBodega();
-                string descripcionesString = string.Join(", ", descripciones);
-
-                formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), descripcionesString, vino.calificacionPromedio(), vino.bodega.getNombre(), nombreRegion, nombrePais);
-            }
-
-
-            formVisualizacionVinos.Show();
             informarGeneracionExitosa();
             gestorGeneradorRankings.finCU();
             
@@ -188,6 +166,7 @@ namespace PPAI_CU_24
             }
         }
 
+        // Sacar
         private void PantallaGeneradorRanking_Leave(object sender, EventArgs e)
         {
             gestorGeneradorRankings.finCU();
