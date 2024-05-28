@@ -11,7 +11,7 @@ namespace PPAI_CU_24.Entidades
         // Atributos
         private string descripcion;
 
-        // Constructos
+        // Constructor
         public Varietal(string descripcion) 
         {
             // Inicializar atributos

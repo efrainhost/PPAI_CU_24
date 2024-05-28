@@ -11,9 +11,10 @@ namespace PPAI_CU_24.Entidades
         // Atributos
         private string nombre { get; set; }
 
+        // Constructor
         public Pais(string nombre)
         {
-            // Inicializar atributos
+            
             this.nombre = nombre;
 
         }
@@ -31,12 +32,6 @@ namespace PPAI_CU_24.Entidades
         }
 
     }
-
-
-
-
-
-
 }
 
 

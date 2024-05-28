@@ -20,8 +20,11 @@ namespace PPAI_CU_24.Gestor
         private string tipoReseñaSeleccionada { get; set; }
         private string visualizacionSeleccionada { get; set; }
         private string confirmacionReporte { get; set; }
+
+        // Relaciones
         public PantallaGeneradorRanking pantallaGeneradorRanking { get; set; }
 
+        // Constructor
         public GestorGeneradorRankings()
         {
             promediosVino = new List<float>();
@@ -32,7 +35,7 @@ namespace PPAI_CU_24.Gestor
         }
 
 
-
+        // Metodos
         public static void opcGenerarRankingVinos()
         {
             var gestor = new GestorGeneradorRankings();
@@ -41,7 +44,6 @@ namespace PPAI_CU_24.Gestor
             gestor.ordenarVinosPorCalificacion();
             gestor.filtrarMejoresDiezVinos();
             gestor.buscarInformacionVinos();
-            gestor.finCU();
         }
         public static DateTime obtenerFechaDesde()
         {
@@ -49,7 +51,6 @@ namespace PPAI_CU_24.Gestor
             return fecha;
         }
 
-        // Método para obtener la fecha hasta
         public static DateTime obtenerFechaHasta()
         {
             DateTime fecha = PantallaGeneradorRanking.tomarFechaHasta();
@@ -98,8 +99,6 @@ namespace PPAI_CU_24.Gestor
 
                 promediosVino.Add(puntajeTot / cantidad);
 
-
-
             }
         }
 
@@ -134,13 +133,12 @@ namespace PPAI_CU_24.Gestor
 
         private void generarExcelRanking()
         {
+            // Se trabajara con esta funcion mas adelante
         }
 
-
-
-        private void finCU()
+        public void finCU()
         {
-            MessageBox.Show("Ranking generado exitosamente!");
+            MessageBox.Show("Finalizó el caso de uso");
         }
     }
 }

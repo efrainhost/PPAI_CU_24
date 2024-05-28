@@ -53,6 +53,7 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Metodos
+
         public static List<Reseña> buscarReseña(Vino vino, DateTime fechaDesde, DateTime fechaHasta)
         {
             List<Reseña> reseñasValidas = [];
@@ -87,11 +88,5 @@ namespace PPAI_CU_24.Entidades
                     return false;
                 }    
         }
-
-        //private static int getPuntaje(Reseña rese)
-        //{
-        //    return rese.puntaje;
-        //}
-
     }
 }

@@ -11,8 +11,10 @@ namespace PPAI_CU_24.Servicios
     {
         public  static List<Vino> GeneradorVinos()
         {
+            // Nueva instancia Pais
             Pais Argentina = new Pais("Argentina");
 
+            // Nuevas instancias Provincias
             Provincia BuenosAires = new Provincia("Buenos Aires", Argentina);
             Provincia Catamarca = new Provincia("Catamarca", Argentina);
             Provincia Chaco = new Provincia("Chaco", Argentina);
@@ -37,7 +39,7 @@ namespace PPAI_CU_24.Servicios
             Provincia TierraDelFuego = new Provincia("Tierra del Fuego",  Argentina);
             Provincia Tucuman = new Provincia("Tucuman",  Argentina);
 
-
+            // Nuevas instancias Regiones
             RegionVitivinicola RegionLaPampa = new RegionVitivinicola("Esta región se encuentra en el centro de Argentina y es conocida por su clima semiárido, ideal para el cultivo de uvas", "RegionLaPampa", LaPampa);
             RegionVitivinicola RegionNeuquen = new RegionVitivinicola("Su clima fresco y sus suelos volcánicos contribuyen a la singularidad de sus vinos.", "RegionNeuquen", Neuquen);
             RegionVitivinicola RegionRioNegro = new RegionVitivinicola("Sus condiciones climáticas únicas, con amplitudes térmicas marcadas, aportan complejidad a sus vinos.", "RegionRioNegro", RioNegro);
@@ -45,9 +47,7 @@ namespace PPAI_CU_24.Servicios
             RegionVitivinicola ZonaEsteMendoza = new RegionVitivinicola(" La zona Este se distingue por su diversidad de suelos y microclimas, dando lugar a vinos varietales excepcionales.", "ZonaEsteMendoza", Mendoza);
             RegionVitivinicola RegionSanJuan = new RegionVitivinicola("Sus viñedos se benefician de la radiación solar intensa y las condiciones áridas que favorecen la calidad de las uvas.", "RegionSanJuan", SanJuan);
             
-     
-           
-
+            // Nuevas instancias de Bodega
             Bodega CatenaZapata = new Bodega("Catena Zapata", ZonaEsteMendoza);
             Bodega Graffigna = new Bodega("Graffigna", RegionSanJuan);
             Bodega Colome = new Bodega("Colomé", RegionPatagonia);
@@ -69,6 +69,7 @@ namespace PPAI_CU_24.Servicios
             Bodega FincaLaPaya = new Bodega("Finca La Paya", RegionPatagonia);
             Bodega LaPampaWines = new Bodega("La Pampa Wines", RegionLaPampa);
 
+            // Nuevas instancias de varietal
             Varietal UvaMerlot = new Varietal("Merlot");
             Varietal UvaCabernetSauvignon = new Varietal("Cabernet Sauvignon");
             Varietal UvaPinotNoir = new Varietal("Pinot Noir");
@@ -92,41 +93,41 @@ namespace PPAI_CU_24.Servicios
             Varietal UvaTorrontes = new Varietal("Torrontes");
             Varietal UvaTannat = new Varietal("Tannat");
 
+            // Nuevas instancias de Reseña
             Reseña resUno = new Reseña(true, new DateTime (2024, 5, 28), 5);
-            Reseña resDos = new Reseña(false, new DateTime(2024, 5, 28), 3);
+            Reseña resDos = new Reseña(true, new DateTime(2024, 5, 28), 3);
             Reseña resTres = new Reseña(true, new DateTime(2024, 5, 28), 4);
             Reseña resCuatro = new Reseña(false, new DateTime(2024, 5, 28), 2);
             Reseña resCinco = new Reseña(true, new DateTime(2024, 5, 28), 5);
-            Reseña resSeis = new Reseña(false, new DateTime(2024, 5, 28), 2);
+            Reseña resSeis = new Reseña(true, new DateTime(2024, 5, 28), 2);
             Reseña resSiete = new Reseña(true, new DateTime(2024, 5, 28), 1);
             Reseña resOcho = new Reseña(false, new DateTime(2024, 5, 28), 5);
             Reseña resNueve = new Reseña(true, new DateTime(2024, 5, 28), 3);
-            Reseña resDiez = new Reseña(false, new DateTime(2024, 5, 27), 4);
-            Reseña resOnce = new Reseña(true, new DateTime(2024, 5, 27), 2);
-            Reseña resDoce = new Reseña(false, new DateTime(2024, 5, 27), 5);
-            Reseña resTrece = new Reseña(true, new DateTime(2024, 5, 27), 4);
-            Reseña resCatorce = new Reseña(false, new DateTime(2024, 5, 27), 3);
+            Reseña resDiez = new Reseña(true, new DateTime(2024, 5, 27), 4);
+            Reseña resOnce = new Reseña(true, new DateTime(2024, 5, 28), 2);
+            Reseña resDoce = new Reseña(false, new DateTime(2024, 5, 28), 5);
+            Reseña resTrece = new Reseña(true, new DateTime(2024, 5, 28), 4);
+            Reseña resCatorce = new Reseña(false, new DateTime(2024, 5, 28), 3);
             Reseña resQuince = new Reseña(true, new DateTime(2024, 5, 28), 1);
             Reseña resDieciseis = new Reseña(false, new DateTime(2024, 5, 28), 5);
-            Reseña resDiecisiete = new Reseña(true, new DateTime(2024, 2, 11), 3);
-            Reseña resDieciocho = new Reseña(false, new DateTime(2024, 2, 12), 4);
-            Reseña resDiecinueve = new Reseña(true, new DateTime(2024, 2, 13), 2);
-            Reseña resVeinte = new Reseña(false, new DateTime(2024, 2, 14), 3);
-            Reseña resVeintiuno = new Reseña(true, new DateTime(2024, 2, 15), 4);
-            Reseña resVeintidos = new Reseña(false, new DateTime(2024, 2, 16), 2);
-            Reseña resVeintitres = new Reseña(true, new DateTime(2024, 2, 17), 1);
-            Reseña resVeinticuatro = new Reseña(false, new DateTime(2024, 2, 18), 5);
-            Reseña resVeinticinco = new Reseña(true, new DateTime(2024, 2, 19), 3);
-            Reseña resVeintiseis = new Reseña(false, new DateTime(2024, 2, 20), 4);
+            Reseña resDiecisiete = new Reseña(true, new DateTime(2024, 5, 28), 3);
+            Reseña resDieciocho = new Reseña(false, new DateTime(2024, 2, 28), 4);
+            Reseña resDiecinueve = new Reseña(true, new DateTime(2024, 2, 29), 2);
+            Reseña resVeinte = new Reseña(true, new DateTime(2024, 5, 29), 3);
+            Reseña resVeintiuno = new Reseña(true, new DateTime(2024, 2, 29), 4);
+            Reseña resVeintidos = new Reseña(true, new DateTime(2024, 2, 29), 2);
+            Reseña resVeintitres = new Reseña(true, new DateTime(2024, 2, 29), 1);
+            Reseña resVeinticuatro = new Reseña(false, new DateTime(2024, 2, 29), 5);
+            Reseña resVeinticinco = new Reseña(true, new DateTime(2024, 2, 28), 3);
+            Reseña resVeintiseis = new Reseña(false, new DateTime(2024, 2, 29), 4);
             Reseña resVeintisiete = new Reseña(true, new DateTime(2024, 2, 21), 2);
             Reseña resVeintiocho = new Reseña(false, new DateTime(2024, 2, 22), 3);
             Reseña resVeintinueve = new Reseña(true, new DateTime(2024, 2, 23), 4);
             Reseña resTreinta = new Reseña(false, new DateTime(2024, 2, 24), 1);
             Reseña resTreintiuno = new Reseña(true, new DateTime(2024, 2, 24), 3);
 
-
-
-            Vino LasPerdicesMalbec = new Vino("Las Perdices Malbec", 1300, LasPerdices, [UvaMalbec, UvaCabernetSauvignon, UvaBonarda], [resUno, resDos]);
+            // Nuevas instancias de vino
+            Vino LasPerdicesMalbec = new Vino("Las Perdices Malbec", 1300, LasPerdices, [UvaMalbec, UvaCabernetSauvignon], [resUno, resDos]);
             Vino GraffignaCentenarioMalbec = new Vino("Graffigna Centenario Malbec", 1500, Graffigna, [UvaMalbec], [resTres, resCuatro]);
             Vino ColomeEstateMalbec = new Vino("Colomé Estate Malbec", 1600, Colome, [UvaMalbec], [resCinco, resSeis]);
             Vino LaRiojaAltaVinaArdanzaReserva = new Vino("La Rioja Alta Viña Ardanza Reserva", 1800, LaRiojaAlta, [], [resSiete, resOcho]);

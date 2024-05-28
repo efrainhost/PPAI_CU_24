@@ -2,13 +2,9 @@
 {
     public partial class PantallaVisualizacionVinos : Form
     {
-
-        
         public PantallaVisualizacionVinos()
         {
             InitializeComponent();
- 
         }
-       
     }
 }

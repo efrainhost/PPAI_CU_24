@@ -12,7 +12,6 @@ namespace PPAI_CU_24.Entidades
         private string nombre { get; set; }
 
         // Relacion de agregación
-        
         public Pais pais { get; set; }
         
         // Constructor
@@ -22,7 +21,6 @@ namespace PPAI_CU_24.Entidades
             this.nombre = nombre;
 
             // Inicializar relacion
-
             this.pais = pais;
         }   
 

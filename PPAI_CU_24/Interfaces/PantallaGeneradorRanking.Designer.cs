@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaGeneradorRanking));
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -143,7 +144,7 @@
             // 
             // btnGenerar
             // 
-            btnGenerar.Location = new Point(511, 638);
+            btnGenerar.Location = new Point(527, 616);
             btnGenerar.Margin = new Padding(5, 6, 5, 6);
             btnGenerar.Name = "btnGenerar";
             btnGenerar.Size = new Size(140, 81);
@@ -176,7 +177,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1171, 861);
+            ClientSize = new Size(1187, 773);
             Controls.Add(label8);
             Controls.Add(cmbTipoVisualizacion);
             Controls.Add(btnGenerar);
@@ -190,6 +191,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(5);
             Name = "PantallaGeneradorRanking";
             StartPosition = FormStartPosition.CenterScreen;

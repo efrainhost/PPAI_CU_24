@@ -11,6 +11,8 @@ namespace PPAI_CU_24.Entidades
         // Atributos
         private string descripcion { get; set; }
         private string nombre { get; set; }
+
+        // Relaciones
         public Provincia provincia { get; set; }
 
         // Constructor 
@@ -42,7 +44,7 @@ namespace PPAI_CU_24.Entidades
             return this.descripcion;
         }
 
-        // Método para obtener nombre de provincia y país
+        // Metodos
         public (string, string) obtenerProvincia()
         {
             string nombreProvincia = this.provincia.getNombreProvincia();

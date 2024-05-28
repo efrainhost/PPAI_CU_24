@@ -14,6 +14,7 @@ namespace PPAI_CU_24.Entidades
         // Relacion 
         public RegionVitivinicola regionVitivinicola { get; set; }
 
+        // Constructor
         public Bodega(string nombre, RegionVitivinicola regionVitivinicola)
         {
             // Inicializar atributos
@@ -35,6 +36,7 @@ namespace PPAI_CU_24.Entidades
             return this.nombre;
         }
 
+        // Metodos
         public (string, string, string) obtenerRegion()
         {
             string nombreRegion = this.regionVitivinicola.getNombre();

@@ -10,19 +10,16 @@ namespace PPAI_CU_24
         // Relaciones  
         public GestorGeneradorRankings gestorGeneradorRankings { get; set; }
 
+        // Constructor
         public PantallaGeneradorRanking()
         {
             InitializeComponent();
             GestorGeneradorRankings gestorGeneradorRankings = new GestorGeneradorRankings();
             this.gestorGeneradorRankings = gestorGeneradorRankings;
-            
+
         }
 
-        private void habilitarPantalla()
-        {
-            this.Visible = true;
-        }
-
+        // Eventos
         private void PantallaGeneradorRanking_Load(object sender, EventArgs e)
         {
             cmbReseña.Items.Add("Normal");
@@ -39,12 +36,12 @@ namespace PPAI_CU_24
             bool fechaValida = false;
             bool reseñaSeleccionada = false;
             bool tipoVisualizacionSeleccionada = false;
+            bool flujocorrecto = false;
 
             bool resultado = ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
             if (resultado)
             {
                 fechaValida = true;
-
             }
             else
             {
@@ -69,7 +66,18 @@ namespace PPAI_CU_24
                 tipoVisualizacionSeleccionada = true;
             }
 
-            if (fechaValida && reseñaSeleccionada && tipoVisualizacionSeleccionada)
+            if (tomarSelecTipoReseña() == "de Sommeliers" && tomarSelecTipoVisualizacion() == "Pantalla")
+            {
+                flujocorrecto = true;
+            }
+
+            else
+            {
+                MessageBox.Show("Se ha seleccionado un flujo alternativo");
+            }
+
+
+            if (fechaValida && reseñaSeleccionada && tipoVisualizacionSeleccionada && flujocorrecto)
             {
                 bool conf = tomarConfirmacionReporte();
                 if (conf)
@@ -83,45 +91,52 @@ namespace PPAI_CU_24
 
             }
         }
+
+        // Metodos
+        private void habilitarPantalla()
+        {
+            this.Visible = true;
+        }
+
         public void opcGenerarRankingVinos()
         {
-                GestorGeneradorRankings.opcGenerarRankingVinos();
+            GestorGeneradorRankings.opcGenerarRankingVinos();
 
-                    
-                var formVisualizacionVinos = new PantallaVisualizacionVinos();
 
-                List<Vino> mejoresVinos = gestorGeneradorRankings.mejoresDiez();
+            var formVisualizacionVinos = new PantallaVisualizacionVinos();
 
-                    
-                foreach (var vino in mejoresVinos)
+            List<Vino> mejoresVinos = gestorGeneradorRankings.mejoresDiez();
+
+
+            foreach (var vino in mejoresVinos)
+            {
+                List<Varietal> var = [];
+                foreach (Varietal varietal in vino.varietales)
                 {
-                    List<Varietal> var = [];
-                    foreach (Varietal varietal in vino.varietales)
-                    {
-                        var.Add(varietal);
-                    }
-
-                    (string nombreBodega, string nombreRegion, string nombreProvincia, string nombrePais, List<string> descripciones) = vino.obtenerBodega();
-                    string descripcionesString = string.Join(", ", descripciones);
-
-                    formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), descripcionesString, vino.calificacionPromedio(), vino.bodega.getNombre(), nombreRegion, nombrePais);
+                    var.Add(varietal);
                 }
-                    
-                    
-                 formVisualizacionVinos.Show();
-                 informarGeneracionExitosa();
+
+                (string nombreBodega, string nombreRegion, string nombreProvincia, string nombrePais, List<string> descripciones) = vino.obtenerBodega();
+                string descripcionesString = string.Join(", ", descripciones);
+
+                formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), descripcionesString, vino.calificacionPromedio(), vino.bodega.getNombre(), nombreRegion, nombrePais);
+            }
+
+
+            formVisualizacionVinos.Show();
+            informarGeneracionExitosa();
+            gestorGeneradorRankings.finCU();
+            
         }
-             
+
         private bool tomarConfirmacionReporte()
         {
             if (MessageBox.Show("¿Desea confirmar generacion de reporte?", "Confirmar registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                
                 return true;
             }
             else
             {
-       
                 MessageBox.Show("Se cancela la operacion");
                 return false;
             }
@@ -173,6 +188,10 @@ namespace PPAI_CU_24
             }
         }
 
+        private void PantallaGeneradorRanking_Leave(object sender, EventArgs e)
+        {
+            gestorGeneradorRankings.finCU();
+        }
     }
 
 }

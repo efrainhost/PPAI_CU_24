@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PantallaVisualizacionVinos));
             dgvVinos = new DataGridView();
             NombreVino = new DataGridViewTextBoxColumn();
             Precio = new DataGridViewTextBoxColumn();
@@ -115,6 +116,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1878, 1015);
             Controls.Add(dgvVinos);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "PantallaVisualizacionVinos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "PantallaVisualizacionVinos";
