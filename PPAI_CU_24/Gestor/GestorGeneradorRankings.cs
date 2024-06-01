@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PPAI_CU_24.Interfaces;
 using PPAI_CU_24.Entidades;
+using System.Runtime.CompilerServices;
 
 namespace PPAI_CU_24.Gestor
 {
@@ -14,16 +15,16 @@ namespace PPAI_CU_24.Gestor
         private List<float> promediosVino { get; set; }
         private static List<Vino>? vinosConReseñaAprobada { get; set; }
         private List<Vino>? vinosOrdenados { get; set; }
-        private static List<Vino> mejoresDiezVinos { get; set; }
-        private static DateTime fechaDesde { get; set; }
-        private static DateTime fechaHasta { get; set; }
+        private List<Vino> mejoresDiezVinos { get; set; }
+        private DateTime fechaDesde { get; set; }
+        private DateTime fechaHasta { get; set; }
         private string tipoReseñaSeleccionada { get; set; }
         private string visualizacionSeleccionada { get; set; }
         private string confirmacionReporte { get; set; }
 
         // Relaciones
         public PantallaGeneradorRanking pantallaGeneradorRanking { get; set; }
-        public PantallaVisualizacionVinos pantallaVisualizacionVinos { get; set; }  
+        public PantallaVisualizacionVinos pantallaVisualizacionVinos { get; set; }
         public Vino vino { get; set; }
 
 
@@ -43,18 +44,17 @@ namespace PPAI_CU_24.Gestor
         {
             var gestor = new GestorGeneradorRankings();
             gestor.buscarVinosConReseñas();
-            gestor.calcularPromedioCalificaciones();
             gestor.ordenarVinosPorCalificacion();
             gestor.filtrarMejoresDiezVinos();
             gestor.buscarInformacionVinos();
         }
-        public static DateTime obtenerFechaDesde()
+        public DateTime obtenerFechaDesde()
         {
             DateTime fecha = PantallaGeneradorRanking.tomarFechaDesde();
             return fecha;
         }
 
-        public static DateTime obtenerFechaHasta()
+        public DateTime obtenerFechaHasta()
         {
             DateTime fecha = PantallaGeneradorRanking.tomarFechaHasta();
             return fecha;
@@ -62,11 +62,11 @@ namespace PPAI_CU_24.Gestor
 
         public void tomarFechaDesde(DateTime fechaDesde)
         {
-            GestorGeneradorRankings.fechaDesde = fechaDesde;
+            this.fechaDesde = fechaDesde;
         }
         public void tomarFechaHasta(DateTime fechaHasta)
         {
-            GestorGeneradorRankings.fechaHasta = fechaHasta;
+            this.fechaHasta = fechaHasta;
         }
 
         public void tomarSelecTipoReseña(string reseñaSeleccionada)
@@ -84,27 +84,34 @@ namespace PPAI_CU_24.Gestor
 
         private void buscarVinosConReseñas()
         {
-            vinosConReseñaAprobada = Vino.buscarVinosConReseñas();
-        }
+            List<Vino> vinos = Servicios.Servicios.GeneradorVinos();
+            List<Vino> vinosAprobados = new List<Vino>();
 
-        private void calcularPromedioCalificaciones()
-        {
-
-            foreach (Vino vino in vinosConReseñaAprobada)
-            {
-                int cantidad = 0;
-                int puntajeTot = 0;
-                foreach (Reseña rese in vino.reseñas)
+            foreach (Vino v in vinos) {
+                float promvino = 0;
+                int puntaje = 0;
+                bool tieneReseñaAprobada = false;
+                (puntaje, tieneReseñaAprobada) = v.buscarVinosConReseñas(this.obtenerFechaDesde(), this.obtenerFechaHasta());
+                if (tieneReseñaAprobada)
                 {
-                    cantidad += 1;
-                    puntajeTot += rese.getPuntaje();
+                    vinosAprobados.Add(v);
+                    int cantrese = v.reseñas.Count();
+                    promvino = calcularPromedioCalificaciones(puntaje, cantrese); //calculaer prom vinos
+                    promediosVino.Add(promvino);
 
                 }
 
-                promediosVino.Add(puntajeTot / cantidad);
-
+                
             }
+
+
         }
+
+        private float calcularPromedioCalificaciones(int puntaje, int cantrese)
+        { 
+            return (puntaje / cantrese);
+        }
+
 
         private void ordenarVinosPorCalificacion()
         {

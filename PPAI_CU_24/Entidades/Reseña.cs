@@ -54,32 +54,16 @@ namespace PPAI_CU_24.Entidades
 
         // Metodos
 
-        public static List<Reseña> buscarReseña(Vino vino, DateTime fechaDesde, DateTime fechaHasta)
+
+        public bool sosPremium()
         {
-            List<Reseña> reseñasValidas = [];
-            foreach (Reseña rese in vino.reseñas)
-            {
-                bool periodo = estasEnElPeriodo(rese, fechaDesde, fechaHasta);
-                bool premium = sosPremium(rese);
-
-                if (periodo && premium)
-                {
-                    reseñasValidas.Add(rese);
-                }
-            }
-            return reseñasValidas;
-
+             return this.esPremium;
         }
 
-        private static bool sosPremium(Reseña rese)
-        {
-             return rese.esPremium;
-        }
-
-        private static bool estasEnElPeriodo(Reseña rese, DateTime fechaDesde, DateTime fechaHasta)
+        public bool estasEnElPeriodo1( DateTime fechaDesde, DateTime fechaHasta)
         {
           
-            if (rese.fechaReseña >= fechaDesde && rese.fechaReseña <= fechaHasta)
+            if (this.fechaReseña >= fechaDesde && this.fechaReseña <= fechaHasta)
                 {
                     return true;
                 }

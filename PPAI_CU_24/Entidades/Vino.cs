@@ -58,32 +58,24 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Métodos
-        public List<Vino> buscarVinosConReseñas()
+        public (int, bool) buscarVinosConReseñas(DateTime fechaDesde, DateTime fechaHasta)
         {
-            List<Vino> vinos = Servicios.Servicios.GeneradorVinos();
-            List<Vino> vinosAprobados = new List<Vino>(); // Corregir la creación de la lista vacía
-
-            foreach (Vino vino in vinos)
-            {
-                List<Reseña> reseñasAprobadas = [];
-                if (vino.reseñas.Count > 0)
+            int ReseñasValidas = 0;
+            bool tieneReseña = false;
+            int puntaje = 0;
+                foreach (Reseña reseña in this.reseñas)
                 {
-                        
-                    
-                    foreach (Reseña rese in this.reseñas) {
-                        bool valida = false;
-                        valida = rese.buscarReseña(GestorGeneradorRankings.obtenerFechaDesde(), GestorGeneradorRankings.obtenerFechaHasta());
-                        if (valida)
-                        {
-                            vinosAprobados.Add(vino);
-                            break;
-                        }
-
+                    if (reseña.estasEnElPeriodo1(fechaDesde, fechaHasta) && reseña.sosPremium())
+                    {
+                        tieneReseña = true;
+                        puntaje += reseña.getPuntaje();
+                        ReseñasValidas++;
                     }
-                    
                 }
-            }
-            return vinosAprobados;
+                          
+            return (puntaje, tieneReseña);
+           
+                         
         }
         public int calificacionPromedio()
         {
