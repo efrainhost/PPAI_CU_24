@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using PPAI_CU_24.Gestor;
@@ -57,20 +58,29 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Métodos
-        public static List<Vino> buscarVinosConReseñas()
+        public List<Vino> buscarVinosConReseñas()
         {
             List<Vino> vinos = Servicios.Servicios.GeneradorVinos();
             List<Vino> vinosAprobados = new List<Vino>(); // Corregir la creación de la lista vacía
 
             foreach (Vino vino in vinos)
             {
+                List<Reseña> reseñasAprobadas = [];
                 if (vino.reseñas.Count > 0)
                 {
-                    List<Reseña> reseñasAprobadas = Reseña.buscarReseña(vino, GestorGeneradorRankings.obtenerFechaDesde(), GestorGeneradorRankings.obtenerFechaHasta());
-                    if (reseñasAprobadas.Count > 0)
-                    {
-                        vinosAprobados.Add(vino);
+                        
+                    
+                    foreach (Reseña rese in this.reseñas) {
+                        bool valida = false;
+                        valida = rese.buscarReseña(GestorGeneradorRankings.obtenerFechaDesde(), GestorGeneradorRankings.obtenerFechaHasta());
+                        if (valida)
+                        {
+                            vinosAprobados.Add(vino);
+                            break;
+                        }
+
                     }
+                    
                 }
             }
             return vinosAprobados;
