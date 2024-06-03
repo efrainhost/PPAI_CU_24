@@ -37,12 +37,12 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Metodos
-        public (string, string, string) obtenerRegion()
+        public (string, string) obtenerRegion()
         {
-            string nombreRegion = this.regionVitivinicola.getNombre();
             RegionVitivinicola region = this.regionVitivinicola;
-            (string nombreProvincia, string nombrePais) = region.obtenerProvincia();
-            return (nombreRegion, nombreProvincia, nombrePais);
+            string nombreRegion = region.getNombre();
+            string nombrePais = region.obtenerProvincia();
+            return (nombreRegion, nombrePais);
         }
     }
 

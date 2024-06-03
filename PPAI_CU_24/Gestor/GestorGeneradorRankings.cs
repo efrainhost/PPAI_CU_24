@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 using PPAI_CU_24.Interfaces;
 using PPAI_CU_24.Entidades;
 using System.Runtime.CompilerServices;
+using System.Collections;
 
 namespace PPAI_CU_24.Gestor
 {
     public class GestorGeneradorRankings
     {
         // Atributos
-        private List<float> promediosVino { get; set; }
-        private static List<Vino>? vinosConReseñaAprobada { get; set; }
-        private List<Vino>? vinosOrdenados { get; set; }
+        private List<(Vino, float)> vinosConReseñaYPromedio { get; set; }
+        private List<Vino> vinosOrdenados { get; set; }
         private List<Vino> mejoresDiezVinos { get; set; }
         private DateTime fechaDesde { get; set; }
         private DateTime fechaHasta { get; set; }
@@ -27,17 +27,16 @@ namespace PPAI_CU_24.Gestor
         public PantallaVisualizacionVinos pantallaVisualizacionVinos { get; set; }
         public Vino vino { get; set; }
 
-
         // Constructor
         public GestorGeneradorRankings()
         {
-            promediosVino = new List<float>();
+            vinosConReseñaYPromedio = new List<(Vino, float)>();
             vinosOrdenados = new List<Vino>();
+            mejoresDiezVinos = new List<Vino>();
             tipoReseñaSeleccionada = string.Empty;
             visualizacionSeleccionada = string.Empty;
             confirmacionReporte = string.Empty;
         }
-
 
         // Metodos
         public static void opcGenerarRankingVinos()
@@ -48,6 +47,7 @@ namespace PPAI_CU_24.Gestor
             gestor.filtrarMejoresDiezVinos();
             gestor.buscarInformacionVinos();
         }
+
         public DateTime obtenerFechaDesde()
         {
             DateTime fecha = PantallaGeneradorRanking.tomarFechaDesde();
@@ -85,75 +85,50 @@ namespace PPAI_CU_24.Gestor
         private void buscarVinosConReseñas()
         {
             List<Vino> vinos = Servicios.Servicios.GeneradorVinos();
-            List<Vino> vinosAprobados = new List<Vino>();
-
-            foreach (Vino v in vinos) {
-                float promvino = 0;
-                int puntaje = 0;
-                bool tieneReseñaAprobada = false;
-                (puntaje, tieneReseñaAprobada) = v.buscarVinosConReseñas(this.obtenerFechaDesde(), this.obtenerFechaHasta());
+            foreach (Vino v in vinos)
+            {
+                (int puntaje, bool tieneReseñaAprobada) = v.buscarVinosConReseñas(this.obtenerFechaDesde(), this.obtenerFechaHasta());
                 if (tieneReseñaAprobada)
                 {
-                    vinosAprobados.Add(v);
-                    int cantrese = v.reseñas.Count();
-                    promvino = calcularPromedioCalificaciones(puntaje, cantrese); //calculaer prom vinos
-                    promediosVino.Add(promvino);
-
+                    float promedio = calcularPromedioCalificaciones(puntaje, v.reseñas.Count);
+                    vinosConReseñaYPromedio.Add((v, promedio));
                 }
-
-                
             }
-
-
         }
 
         private float calcularPromedioCalificaciones(int puntaje, int cantrese)
-        { 
-            return (puntaje / cantrese);
+        {
+            return cantrese > 0 ? (float)puntaje / cantrese : 0;
         }
-
 
         private void ordenarVinosPorCalificacion()
         {
-            vinosOrdenados = promediosVino
-                .Select((promedio, index) => new { Promedio = promedio, Indice = index }) 
-                .OrderByDescending(item => item.Promedio) 
-                .Select(item => item.Indice) 
-                .Distinct() 
-                .SelectMany<int, Vino>((index, wineIndex) => new List<Vino> { vinosConReseñaAprobada[index] }) 
-                .ToList();
+            vinosOrdenados = vinosConReseñaYPromedio.OrderByDescending(vp => vp.Item2).Select(vp => vp.Item1).ToList();
         }
 
         private void filtrarMejoresDiezVinos()
         {
             mejoresDiezVinos = vinosOrdenados.Take(10).ToList();
         }
-        public List<Vino> mejoresDiez()
-        {
-            return mejoresDiezVinos;
-        }
         private void buscarInformacionVinos()
         {
             var formVisualizacionVinos = new PantallaVisualizacionVinos();
             foreach (Vino vino in mejoresDiezVinos)
             {
-                string nommbre = vino.getNombre();
+                string nombre = vino.getNombre();
                 float precio = vino.getPrecioARS();
-                (string, string, string, string, List<string>) tupla = vino.obtenerBodega();
-                List<Varietal> var = [];
-                foreach (Varietal varietal in vino.varietales)
-                {
-                    var.Add(varietal);
-                }
-
-                (string nombreBodega, string nombreRegion, string nombreProvincia, string nombrePais, List<string> descripciones) = vino.obtenerBodega();
-                string descripcionesString = string.Join(", ", descripciones);
+                List<string> descripVar = vino.obtenerVarietal();
+                (string bodega, string region, string pais) = vino.obtenerBodegaRegionPais();
+                float puntaje = vinosConReseñaYPromedio.Where(vp => vp.Item1 == vino).Select(vp => vp.Item2).FirstOrDefault();
+                string descripcionesString = string.Join(", ", descripVar);
                 
-                formVisualizacionVinos.dgvVinos.Rows.Add(vino.getNombre(), vino.getPrecioARS(), descripcionesString, vino.calificacionPromedio(), nombreBodega, nombreRegion, nombrePais);
+                formVisualizacionVinos.dgvVinos.Rows.Add(nombre, precio, descripcionesString,puntaje, bodega, region, pais);
             }
             formVisualizacionVinos.Show();
         }
 
+
+        
         private void generarExcelRanking()
         {
             // Se trabajara con esta funcion mas adelante

@@ -19,8 +19,8 @@ namespace PPAI_CU_24.Entidades
         public Bodega bodega { get; set; }
         public List<Varietal> varietales { get; set; }
         public List<Reseña> reseñas { get; set; }
-       
-        
+
+
 
         // Constructor
         public Vino(string nombre, float precioARS, Bodega bodega, List<Varietal> varietales, List<Reseña> reseñas)
@@ -63,53 +63,51 @@ namespace PPAI_CU_24.Entidades
             int ReseñasValidas = 0;
             bool tieneReseña = false;
             int puntaje = 0;
-                foreach (Reseña reseña in this.reseñas)
+            foreach (Reseña reseña in this.reseñas)
+            {
+                if (reseña.estasEnElPeriodo1(fechaDesde, fechaHasta) && reseña.sosPremium())
                 {
-                    if (reseña.estasEnElPeriodo1(fechaDesde, fechaHasta) && reseña.sosPremium())
-                    {
-                        tieneReseña = true;
-                        puntaje += reseña.getPuntaje();
-                        ReseñasValidas++;
-                    }
+                    tieneReseña = true;
+                    puntaje += reseña.getPuntaje();
+                    ReseñasValidas++;
                 }
-                          
+            }
+
             return (puntaje, tieneReseña);
-           
-                         
-        }
-        public int calificacionPromedio()
-        {
-            int calificacion = 0;
-            if (reseñas.Count > 0)
-            {
-                int cont = 0;
-                int puntajeTot = 0;
-                foreach (Reseña rese in reseñas)
-                {
-                    cont++;
-                    puntajeTot += rese.getPuntaje();
-                }
-                calificacion = puntajeTot / cont;
-            }
-            return calificacion;
+
 
         }
 
-        public (string, string, string, string, List<string>) obtenerBodega()
+        public List<string> obtenerVarietal()
         {
-            List<string> descripciones = new List<string>(); 
-            string nombreBodega = bodega.getNombre();
-            List<Varietal> varietales_list = varietales;
-            foreach (Varietal var in varietales)
+            List<string> descripcionesVar = new List<string>();
+            foreach (Varietal var in this.varietales)
             {
-                descripciones.Add(var.getDescripcion());
+                descripcionesVar.Add(var.getDescripcion());
             }
-            (string nombreRegion, string nombreProvincia, string nombrePais) = bodega.obtenerRegion(); 
-            return (nombreBodega, nombreRegion, nombreProvincia, nombrePais, descripciones);
+            return descripcionesVar;
         }
+    
+    public (string, string, string) obtenerBodegaRegionPais()
+        {
+            string bodega = this.bodega.getNombre();
+            (string region, string pais)  = this.bodega.obtenerRegion();
+
+            return (bodega, region, pais);
+            
+         }
+
+
+
+
+
+
+
+
     }
-
 }
+
+  
 
     
 
