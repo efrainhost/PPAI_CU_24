@@ -74,8 +74,6 @@ namespace PPAI_CU_24.Entidades
             }
 
             return (puntaje, tieneReseña);
-
-
         }
 
         public List<string> obtenerVarietal()
@@ -88,7 +86,7 @@ namespace PPAI_CU_24.Entidades
             return descripcionesVar;
         }
     
-    public (string, string, string) obtenerBodegaRegionPais()
+        public (string, string, string) obtenerBodegaRegionPais()
         {
             string bodega = this.bodega.getNombre();
             (string region, string pais)  = this.bodega.obtenerRegion();
@@ -96,14 +94,6 @@ namespace PPAI_CU_24.Entidades
             return (bodega, region, pais);
             
          }
-
-
-
-
-
-
-
-
     }
 }
 

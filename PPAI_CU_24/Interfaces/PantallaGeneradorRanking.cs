@@ -39,6 +39,8 @@ namespace PPAI_CU_24
             bool flujocorrecto = false;
 
             bool resultado = ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
+            gestorGeneradorRankings.tomarFechaDesde(tomarFechaDesde());
+            gestorGeneradorRankings.tomarFechaHasta(tomarFechaHasta());
             if (resultado)
             {
                 fechaValida = true;
@@ -94,14 +96,14 @@ namespace PPAI_CU_24
         }
 
         // Metodos
-        private void habilitarPantalla()
+        public void habilitarPantalla()
         {
             this.Visible = true;
         }
 
         public void opcGenerarRankingVinos()
         {
-            GestorGeneradorRankings.opcGenerarRankingVinos();
+            gestorGeneradorRankings.opcGenerarRankingVinos();
             informarGeneracionExitosa();
             gestorGeneradorRankings.finCU();
             
@@ -127,11 +129,11 @@ namespace PPAI_CU_24
         }
 
 
-        public static DateTime tomarFechaDesde()
+        public DateTime tomarFechaDesde()
         {
             return dtFechaDesde.Value;
         }
-        public static DateTime tomarFechaHasta()
+        public DateTime tomarFechaHasta()
         {
             return dtFechaHasta.Value;
         }
@@ -164,12 +166,6 @@ namespace PPAI_CU_24
                 bool res = false;
                 return res;
             }
-        }
-
-        // Sacar
-        private void PantallaGeneradorRanking_Leave(object sender, EventArgs e)
-        {
-            gestorGeneradorRankings.finCU();
         }
     }
 

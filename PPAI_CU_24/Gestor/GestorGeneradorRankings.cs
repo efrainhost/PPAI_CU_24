@@ -30,35 +30,37 @@ namespace PPAI_CU_24.Gestor
         // Constructor
         public GestorGeneradorRankings()
         {
+          
             vinosConReseñaYPromedio = new List<(Vino, float)>();
             vinosOrdenados = new List<Vino>();
             mejoresDiezVinos = new List<Vino>();
             tipoReseñaSeleccionada = string.Empty;
             visualizacionSeleccionada = string.Empty;
             confirmacionReporte = string.Empty;
+            
+            
         }
 
         // Metodos
-        public static void opcGenerarRankingVinos()
+        public void opcGenerarRankingVinos()
         {
-            var gestor = new GestorGeneradorRankings();
-            gestor.buscarVinosConReseñas();
-            gestor.ordenarVinosPorCalificacion();
-            gestor.filtrarMejoresDiezVinos();
-            gestor.buscarInformacionVinos();
+           
+            buscarVinosConReseñas();
+            ordenarVinosPorCalificacion();
+            filtrarMejoresDiezVinos();
+            buscarInformacionVinos();
         }
 
-        public DateTime obtenerFechaDesde()
-        {
-            DateTime fecha = PantallaGeneradorRanking.tomarFechaDesde();
-            return fecha;
-        }
+        //public void obtenerFechaDesde()
+        //{
+        //    fechaDesde = pantallaGeneradorRanking.tomarFechaDesde();
+           
+        //}
 
-        public DateTime obtenerFechaHasta()
-        {
-            DateTime fecha = PantallaGeneradorRanking.tomarFechaHasta();
-            return fecha;
-        }
+        //public void obtenerFechaHasta()
+        //{
+        //    fechaHasta = pantallaGeneradorRanking.tomarFechaHasta();
+        //}
 
         public void tomarFechaDesde(DateTime fechaDesde)
         {
@@ -82,12 +84,12 @@ namespace PPAI_CU_24.Gestor
             this.confirmacionReporte = confirmacionReporte;
         }
 
-        private void buscarVinosConReseñas()
+        public void buscarVinosConReseñas()
         {
             List<Vino> vinos = Servicios.Servicios.GeneradorVinos();
             foreach (Vino v in vinos)
             {
-                (int puntaje, bool tieneReseñaAprobada) = v.buscarVinosConReseñas(this.obtenerFechaDesde(), this.obtenerFechaHasta());
+                (int puntaje, bool tieneReseñaAprobada) = v.buscarVinosConReseñas(fechaDesde, fechaHasta);
                 if (tieneReseñaAprobada)
                 {
                     float promedio = calcularPromedioCalificaciones(puntaje, v.reseñas.Count);
@@ -96,21 +98,21 @@ namespace PPAI_CU_24.Gestor
             }
         }
 
-        private float calcularPromedioCalificaciones(int puntaje, int cantrese)
+        public float calcularPromedioCalificaciones(int puntaje, int cantrese)
         {
             return cantrese > 0 ? (float)puntaje / cantrese : 0;
         }
 
-        private void ordenarVinosPorCalificacion()
+        public void ordenarVinosPorCalificacion()
         {
             vinosOrdenados = vinosConReseñaYPromedio.OrderByDescending(vp => vp.Item2).Select(vp => vp.Item1).ToList();
         }
 
-        private void filtrarMejoresDiezVinos()
+        public void filtrarMejoresDiezVinos()
         {
             mejoresDiezVinos = vinosOrdenados.Take(10).ToList();
         }
-        private void buscarInformacionVinos()
+        public void buscarInformacionVinos()
         {
             var formVisualizacionVinos = new PantallaVisualizacionVinos();
             foreach (Vino vino in mejoresDiezVinos)
@@ -129,12 +131,12 @@ namespace PPAI_CU_24.Gestor
 
 
         
-        private void generarExcelRanking()
+        public void generarExcelRanking()
         {
             // Se trabajara con esta funcion mas adelante
         }
 
-        // VER
+     
         public void finCU()
         {
             MessageBox.Show("Finalizó el caso de uso");
