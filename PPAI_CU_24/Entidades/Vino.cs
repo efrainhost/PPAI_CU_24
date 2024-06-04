@@ -65,7 +65,7 @@ namespace PPAI_CU_24.Entidades
             int puntaje = 0;
             foreach (Reseña reseña in this.reseñas)
             {
-                if (reseña.estasEnElPeriodo1(fechaDesde, fechaHasta) && reseña.sosPremium())
+                if (reseña.estasEnElPeriodo(fechaDesde, fechaHasta) && reseña.sosPremium())
                 {
                     tieneReseña = true;
                     puntaje += reseña.getPuntaje();

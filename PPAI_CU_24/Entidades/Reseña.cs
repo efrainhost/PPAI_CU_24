@@ -60,7 +60,7 @@ namespace PPAI_CU_24.Entidades
              return this.esPremium;
         }
 
-        public bool estasEnElPeriodo1( DateTime fechaDesde, DateTime fechaHasta)
+        public bool estasEnElPeriodo(DateTime fechaDesde, DateTime fechaHasta)
         {
           
             if (this.fechaReseña >= fechaDesde && this.fechaReseña <= fechaHasta)

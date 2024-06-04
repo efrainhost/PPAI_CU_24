@@ -39,15 +39,14 @@ namespace PPAI_CU_24
             bool flujocorrecto = false;
 
             bool resultado = ValidarPeriodo(tomarFechaDesde(), tomarFechaHasta());
-            gestorGeneradorRankings.tomarFechaDesde(tomarFechaDesde());
-            gestorGeneradorRankings.tomarFechaHasta(tomarFechaHasta());
+            
             if (resultado)
             {
                 fechaValida = true;
             }
             else
             {
-                MessageBox.Show("Fechas invalidas");
+                MessageBox.Show("La fecha desde debe ser menor que la fecha hasta");
             }
 
             if (tomarSelecTipoReseña() == "")
@@ -80,11 +79,12 @@ namespace PPAI_CU_24
 
 
             if (fechaValida && tipoReseñaSeleccionada && tipoVisualizacionSeleccionada && flujocorrecto)
-
             {
                 bool conf = tomarConfirmacionReporte();
                 if (conf)
                 {
+                    gestorGeneradorRankings.tomarFechaDesde(tomarFechaDesde());
+                    gestorGeneradorRankings.tomarFechaHasta(tomarFechaHasta());
                     opcGenerarRankingVinos();
                 }
                 else
@@ -106,7 +106,6 @@ namespace PPAI_CU_24
             gestorGeneradorRankings.opcGenerarRankingVinos();
             informarGeneracionExitosa();
             gestorGeneradorRankings.finCU();
-            
         }
 
         private bool tomarConfirmacionReporte()
@@ -128,7 +127,6 @@ namespace PPAI_CU_24
             this.Hide();
         }
 
-
         public DateTime tomarFechaDesde()
         {
             return dtFechaDesde.Value;
@@ -138,12 +136,12 @@ namespace PPAI_CU_24
             return dtFechaHasta.Value;
         }
 
-        private string tomarSelecTipoReseña()
+        public string tomarSelecTipoReseña()
         {
             return cmbReseña.Text;
         }
 
-        private string tomarSelecTipoVisualizacion()
+        public string tomarSelecTipoVisualizacion()
         {
             return cmbTipoVisualizacion.Text;
         }

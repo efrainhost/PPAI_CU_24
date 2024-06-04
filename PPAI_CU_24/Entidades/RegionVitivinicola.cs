@@ -45,7 +45,7 @@ namespace PPAI_CU_24.Entidades
         }
 
         // Metodos
-        public string obtenerProvincia()
+        public string obtenerPais()
         {
             string nombrePais = this.provincia.getNombrePais();
             return nombrePais;

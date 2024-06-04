@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PPAI_CU_24.Interfaces;
+using PPAI_CU_24.Servicios;
 using PPAI_CU_24.Entidades;
 using System.Runtime.CompilerServices;
 using System.Collections;
@@ -30,38 +31,23 @@ namespace PPAI_CU_24.Gestor
         // Constructor
         public GestorGeneradorRankings()
         {
-          
             vinosConReseñaYPromedio = new List<(Vino, float)>();
             vinosOrdenados = new List<Vino>();
             mejoresDiezVinos = new List<Vino>();
             tipoReseñaSeleccionada = string.Empty;
             visualizacionSeleccionada = string.Empty;
-            confirmacionReporte = string.Empty;
-            
-            
+            confirmacionReporte = string.Empty; 
         }
 
         // Metodos
         public void opcGenerarRankingVinos()
         {
-           
             buscarVinosConReseñas();
             ordenarVinosPorCalificacion();
             filtrarMejoresDiezVinos();
             buscarInformacionVinos();
         }
-
-        //public void obtenerFechaDesde()
-        //{
-        //    fechaDesde = pantallaGeneradorRanking.tomarFechaDesde();
-           
-        //}
-
-        //public void obtenerFechaHasta()
-        //{
-        //    fechaHasta = pantallaGeneradorRanking.tomarFechaHasta();
-        //}
-
+        
         public void tomarFechaDesde(DateTime fechaDesde)
         {
             this.fechaDesde = fechaDesde;
@@ -112,6 +98,7 @@ namespace PPAI_CU_24.Gestor
         {
             mejoresDiezVinos = vinosOrdenados.Take(10).ToList();
         }
+
         public void buscarInformacionVinos()
         {
             var formVisualizacionVinos = new PantallaVisualizacionVinos();
@@ -129,14 +116,11 @@ namespace PPAI_CU_24.Gestor
             formVisualizacionVinos.Show();
         }
 
-
-        
         public void generarExcelRanking()
         {
             // Se trabajara con esta funcion mas adelante
         }
 
-     
         public void finCU()
         {
             MessageBox.Show("Finalizó el caso de uso");

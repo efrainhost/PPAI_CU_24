@@ -70,28 +70,28 @@ namespace PPAI_CU_24.Servicios
             Bodega LaPampaWines = new Bodega("La Pampa Wines", RegionLaPampa);
 
             // Nuevas instancias de varietal
-            Varietal UvaMerlot = new Varietal("Merlot");
-            Varietal UvaCabernetSauvignon = new Varietal("Cabernet Sauvignon");
-            Varietal UvaPinotNoir = new Varietal("Pinot Noir");
-            Varietal UvaSyrah = new Varietal("Syrah");
-            Varietal UvaMalbec = new Varietal("Malbec");
-            Varietal UvaChardonnay = new Varietal("Chardonnay");
-            Varietal UvaSauvignonBlanc = new Varietal("Sauvignon Blanc");
-            Varietal UvaRiesling = new Varietal("Riesling");
-            Varietal UvaTempranillo = new Varietal("Tempranillo");
-            Varietal UvaSangiovese = new Varietal("Sangiovese");
-            Varietal UvaZinfandel = new Varietal("Zinfandel");
-            Varietal UvaGrenache = new Varietal("Grenache");
-            Varietal UvaNebbiolo = new Varietal("Nebbiolo");
-            Varietal UvaBarbera = new Varietal("Barbera");
-            Varietal UvaViognier = new Varietal("Viognier");
-            Varietal UvaGewurztraminer = new Varietal("Gewürztraminer");
-            Varietal UvaCheninBlanc = new Varietal("Chenin Blanc");
-            Varietal UvaMuscat = new Varietal("Muscat");
-            Varietal UvaPetitVerdot = new Varietal("Petit Verdot");
-            Varietal UvaBonarda = new Varietal("Bonarda");
-            Varietal UvaTorrontes = new Varietal("Torrontes");
-            Varietal UvaTannat = new Varietal("Tannat");
+            Varietal Merlot = new Varietal("80% Uva merlot");
+            Varietal CabernetSauvignon = new Varietal("40% Uva Cabernet Sauvignon");
+            Varietal PinotNoir = new Varietal("90% Uva Pinot Noir");
+            Varietal Syrah = new Varietal("70% Uva Syrah");
+            Varietal Malbec = new Varietal("60% Uva Malbec");
+            Varietal Chardonnay = new Varietal("80% Uva Chardonnay");
+            Varietal SauvignonBlanc = new Varietal("90% Uva Sauvignon Blanc");
+            Varietal Riesling = new Varietal("70% Uva SyrahRiesling");
+            Varietal Tempranillo = new Varietal("80% Uva Tempranillo");
+            Varietal Sangiovese = new Varietal("Sangiovese");
+            Varietal Zinfandel = new Varietal("80% Uva Zinfandel");
+            Varietal Grenache = new Varietal("90% Uva Grenache");
+            Varietal Nebbiolo = new Varietal("80% Uva Nebbiolo");
+            Varietal Barbera = new Varietal("90% Uva Barbera");
+            Varietal Viognier = new Varietal("80% Uva Viognier");
+            Varietal Gewurztraminer = new Varietal("90% Uva Gewürztraminer");
+            Varietal CheninBlanc = new Varietal("90% Uva Chenin Blanc");
+            Varietal Muscat = new Varietal("80% Uva Muscat");
+            Varietal PetitVerdot = new Varietal("80% Uva Petit Verdot");
+            Varietal Bonarda = new Varietal("70% Uva SyrahBonarda");
+            Varietal Torrontes = new Varietal("80% Uva Torrontes");
+            Varietal Tannat = new Varietal("70% Uva SyrahTannat");
 
             // Nuevas instancias de Reseña
             Reseña resUno = new Reseña(true, new DateTime (2024, 5, 28), 5);
@@ -127,27 +127,27 @@ namespace PPAI_CU_24.Servicios
             Reseña resTreintiuno = new Reseña(true, new DateTime(2024, 2, 24), 3);
 
             // Nuevas instancias de vino
-            Vino LasPerdicesMalbec = new Vino("Las Perdices Malbec", 1300, LasPerdices, [UvaMalbec, UvaCabernetSauvignon], [resUno, resDos]);
-            Vino GraffignaCentenarioMalbec = new Vino("Graffigna Centenario Malbec", 1500, Graffigna, [UvaMalbec], [resTres, resCuatro]);
-            Vino ColomeEstateMalbec = new Vino("Colomé Estate Malbec", 1600, Colome, [UvaMalbec], [resCinco, resSeis]);
-            Vino LaRiojaAltaVinaArdanzaReserva = new Vino("La Rioja Alta Viña Ardanza Reserva", 1800, LaRiojaAlta, [UvaBarbera], [resSiete, resOcho]);
-            Vino ElEstecoDonDavidMalbec = new Vino("El Esteco Don David Malbec", 1700,ElEsteco, [UvaMalbec], [resNueve,resDiez]);
-            Vino HumbertoCanaleOldVineMalbec = new Vino("Humberto Canale Old Vine Malbec", 1800, HumbertoCanale, [UvaMalbec], [resOnce, resDoce]);
-            Vino DelFinDelMundoGranReservaMalbec = new Vino("Del Fin del Mundo Gran Reserva Malbec", 1900, DelFinDelMundo, [UvaMalbec], [resTrece, resCatorce]);
-            Vino ChacraPinotNoir = new Vino("Chacra Pinot Noir", 2200, Chacra, [UvaPinotNoir], [resQuince, resDieciseis]);
-            Vino MalabrigoSyrah = new Vino("Malabrigo Syrah", 1400, Malabrigo, [UvaSyrah], [resDiecisiete, resDieciocho]);
-            Vino EstanciaMendozaCabernetSauvignon = new Vino("Estancia Mendoza Cabernet Sauvignon", 1600, EstanciaMendoza, [UvaCabernetSauvignon], [resDiecinueve, resVeinte]);
-            Vino SantaJuliaReservaMalbec = new Vino("Santa Julia Reserva Malbec", 1200, SantaJulia, [UvaMalbec], [resVeintiuno]);
-            Vino Ruta40Malbec = new Vino("Ruta 40 Malbec", 1500, Ruta40, [UvaMalbec], [resVeintidos]);
-            Vino PatagoniaWinesMerlot = new Vino("Patagonia Wines Merlot", 1700, PatagoniaWines, [UvaMerlot], [resVeintitres]);
-            Vino SantiagoGraffignaCabernetSauvignon = new Vino("Santiago Graffigna Cabernet Sauvignon", 1400, Graffigna, [UvaCabernetSauvignon], [resVeinticuatro]);
-            Vino VirgenDelSolTorrontes = new Vino("Virgen del Sol Torrontés", 1100, VirgenDelSol, [UvaTorrontes], [resVeinticinco]);
-            Vino MisionesVineyardTannat = new Vino("Missiones Vineyard Tannat", 1300, MissionesVineyard, [UvaTannat], [resVeintiseis]);
-            Vino IberaValleyMalbec = new Vino("Iberá Valley Malbec", 1600, IberaValley, [UvaMalbec], [resVeintisiete]);
-            Vino FincaLaPayaBonarda = new Vino("Finca La Paya Bonarda", 1200, FincaLaPaya, [UvaBonarda], [resVeintiocho]);
-            Vino LaPampaWinesChardonnay = new Vino("La Pampa Wines Chardonnay", 1400, LaPampaWines, [UvaChardonnay], [resVeintinueve]);
-            Vino EstanciaPatagonicaMalbec = new Vino("Estancia Patagónica Malbec", 1400, EstanciaMendoza, [UvaMalbec], [resTreinta]);
-            Vino TierraDelSolCabernetSauvignon = new Vino("Tierra del Sol Cabernet Sauvignon", 1500, VirgenDelSol, [UvaCabernetSauvignon], [resTreintiuno]);
+            Vino LasPerdicesMalbec = new Vino("Las Perdices Malbec", 1300, LasPerdices, [Malbec, CabernetSauvignon], [resUno, resDos]);
+            Vino GraffignaCentenarioMalbec = new Vino("Graffigna Centenario Malbec", 1500, Graffigna, [Malbec], [resTres, resCuatro]);
+            Vino ColomeEstateMalbec = new Vino("Colomé Estate Malbec", 1600, Colome, [Malbec], [resCinco, resSeis]);
+            Vino LaRiojaAltaVinaArdanzaReserva = new Vino("La Rioja Alta Viña Ardanza Reserva", 1800, LaRiojaAlta, [Barbera], [resSiete, resOcho]);
+            Vino ElEstecoDonDavidMalbec = new Vino("El Esteco Don David Malbec", 1700,ElEsteco, [Malbec], [resNueve,resDiez]);
+            Vino HumbertoCanaleOldVineMalbec = new Vino("Humberto Canale Old Vine Malbec", 1800, HumbertoCanale, [Malbec], [resOnce, resDoce]);
+            Vino DelFinDelMundoGranReservaMalbec = new Vino("Del Fin del Mundo Gran Reserva Malbec", 1900, DelFinDelMundo, [Malbec], [resTrece, resCatorce]);
+            Vino ChacraPinotNoir = new Vino("Chacra Pinot Noir", 2200, Chacra, [PinotNoir], [resQuince, resDieciseis]);
+            Vino MalabrigoSyrah = new Vino("Malabrigo Syrah", 1400, Malabrigo, [Syrah], [resDiecisiete, resDieciocho]);
+            Vino EstanciaMendozaCabernetSauvignon = new Vino("Estancia Mendoza Cabernet Sauvignon", 1600, EstanciaMendoza, [CabernetSauvignon], [resDiecinueve, resVeinte]);
+            Vino SantaJuliaReservaMalbec = new Vino("Santa Julia Reserva Malbec", 1200, SantaJulia, [Malbec], [resVeintiuno]);
+            Vino Ruta40Malbec = new Vino("Ruta 40 Malbec", 1500, Ruta40, [Malbec], [resVeintidos]);
+            Vino PatagoniaWinesMerlot = new Vino("Patagonia Wines Merlot", 1700, PatagoniaWines, [Merlot], [resVeintitres]);
+            Vino SantiagoGraffignaCabernetSauvignon = new Vino("Santiago Graffigna Cabernet Sauvignon", 1400, Graffigna, [CabernetSauvignon], [resVeinticuatro]);
+            Vino VirgenDelSolTorrontes = new Vino("Virgen del Sol Torrontés", 1100, VirgenDelSol, [Torrontes], [resVeinticinco]);
+            Vino MisionesVineyardTannat = new Vino("Missiones Vineyard Tannat", 1300, MissionesVineyard, [Tannat], [resVeintiseis]);
+            Vino IberaValleyMalbec = new Vino("Iberá Valley Malbec", 1600, IberaValley, [Malbec], [resVeintisiete]);
+            Vino FincaLaPayaBonarda = new Vino("Finca La Paya Bonarda", 1200, FincaLaPaya, [Bonarda], [resVeintiocho]);
+            Vino LaPampaWinesChardonnay = new Vino("La Pampa Wines Chardonnay", 1400, LaPampaWines, [Chardonnay], [resVeintinueve]);
+            Vino EstanciaPatagonicaMalbec = new Vino("Estancia Patagónica Malbec", 1400, EstanciaMendoza, [Malbec], [resTreinta]);
+            Vino TierraDelSolCabernetSauvignon = new Vino("Tierra del Sol Cabernet Sauvignon", 1500, VirgenDelSol, [CabernetSauvignon], [resTreintiuno]);
 
             List<Vino> vinos = new List<Vino>();
 
